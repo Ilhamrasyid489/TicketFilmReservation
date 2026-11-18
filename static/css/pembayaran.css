@@ -1,0 +1,186 @@
+/* ============================================================
+   CinePass — Payment & e-ticket page styles
+   ============================================================ */
+
+.gold { color: var(--primary); }
+.filled { font-variation-settings: "FILL" 1; }
+.payment-main { position: relative; padding-bottom: var(--margin-lg); }
+.payment-glow { position: absolute; top: -4rem; left: 50%; transform: translateX(-50%); width: 18rem; height: 9rem; border-radius: 50%; background: rgba(234, 179, 8, 0.1); filter: blur(3rem); pointer-events: none; }
+.hidden { display: none !important; }
+
+/* ---------- Switcher ---------- */
+.switcher {
+  position: relative;
+  display: flex;
+  margin: var(--space-md) var(--gutter) var(--space-lg);
+  padding: 0.25rem;
+  background: var(--surface-container-low);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+.switcher-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.5rem;
+  border-radius: var(--radius-lg);
+  color: var(--on-surface-variant);
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.switcher-tab .material-symbols-outlined { font-size: 1.1rem; }
+.switcher-tab.active { background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow-sm); }
+.pulse-dot { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--primary-container); animation: pulse 1.6s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.view { padding-inline: var(--gutter); display: flex; flex-direction: column; gap: var(--space-md); }
+
+/* ---------- Timer ---------- */
+.timer-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  background: var(--surface-container-high);
+  border-radius: var(--radius-xl);
+  padding: 0.7rem 0.85rem;
+  box-shadow: var(--shadow-sm);
+}
+.timer-banner > div { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8125rem; color: var(--on-surface-variant); }
+.timer-banner .material-symbols-outlined { color: var(--primary); font-size: 1.25rem; }
+.timer-banner strong { color: var(--primary); background: var(--surface-container-lowest); padding: 0.25rem 0.6rem; border-radius: var(--radius-lg); font-size: 0.75rem; letter-spacing: 0.08em; }
+
+/* ---------- Order card ---------- */
+.order-head { display: flex; gap: var(--space-md); }
+.order-poster {
+  position: relative;
+  width: 6rem;
+  height: 8rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-container-high);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-sm);
+}
+.order-poster .badge { position: absolute; top: 0.25rem; left: 0.25rem; }
+.order-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.order-tags { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem; }
+.order-info h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.order-cinema { display: flex; align-items: center; gap: 0.25rem; font-size: 0.75rem; color: var(--on-surface-variant); margin-top: 0.2rem; }
+.order-cinema .material-symbols-outlined { font-size: 0.9375rem; color: var(--primary); }
+.order-info > .font-label { font-size: 0.5625rem; margin-top: 0.1rem; }
+.order-date { display: flex; align-items: center; justify-content: space-between; gap: 0.3rem; margin-top: auto; padding-top: 0.5rem; flex-wrap: wrap; }
+.order-date > span { display: flex; align-items: center; gap: 0.25rem; font-size: 0.75rem; }
+.order-date .material-symbols-outlined { font-size: 1rem; color: var(--primary); }
+.order-date strong { font-size: 0.6875rem; color: var(--primary); background: var(--surface-container-lowest); padding: 0.2rem 0.45rem; border-radius: var(--radius); }
+.seat-capsule { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); background: var(--surface-container-low); border-radius: var(--radius-lg); padding: 0.6rem 0.75rem; margin-top: var(--space-md); }
+.seat-capsule > div:first-child { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--on-surface-variant); }
+.seat-capsule .material-symbols-outlined { color: var(--primary); font-size: 1.1rem; }
+.seat-tags { display: flex; gap: 0.35rem; }
+
+/* ---------- Price card ---------- */
+.price-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding-bottom: var(--space-xs); }
+.price-head h3 { font-size: 0.9375rem; font-weight: 700; }
+.price-lines { display: flex; flex-direction: column; gap: 0.6rem; padding-top: 0.4rem; }
+.price-line { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; font-size: 0.8125rem; }
+.price-line > span { color: var(--on-surface-variant); }
+.price-line small { display: block; font-size: 0.625rem; color: var(--outline); }
+.price-line strong { font-weight: 700; white-space: nowrap; }
+.price-line.discount { background: var(--surface-container-high); border-radius: var(--radius-lg); padding: 0.5rem; color: var(--primary); }
+.price-line.discount > span { color: var(--primary); display: flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 700; }
+.price-line.discount .material-symbols-outlined { font-size: 1.1rem; }
+.price-line.discount strong { color: var(--primary); }
+.divider { height: 1px; background: var(--surface-variant); margin: var(--space-sm) 0; }
+.grand-total { display: flex; align-items: center; justify-content: space-between; }
+.grand-total span { font-weight: 700; }
+.grand-total strong { font-family: var(--font-heading); font-size: 1.35rem; color: var(--primary); }
+
+/* ---------- Payment methods ---------- */
+.payment-methods { display: flex; flex-direction: column; gap: var(--space-sm); }
+.payment-methods .section-heading { margin-bottom: 0; }
+.payment-methods .section-heading h3 { font-size: 0.9375rem; }
+.payment-methods .section-heading .font-label { display: flex; align-items: center; gap: 0.2rem; }
+.payment-methods .section-heading .material-symbols-outlined { font-size: 0.875rem; }
+.pay-option { background: var(--surface-container); border: var(--hairline); border-radius: var(--radius-xl); padding: var(--space-md); box-shadow: var(--shadow-sm); cursor: pointer; transition: border-color 0.2s ease, background-color 0.2s ease; }
+.pay-option:hover { background: var(--surface-container-high); }
+.pay-option.active { border-color: rgba(234, 179, 8, 0.5); background: var(--surface-container-high); box-shadow: var(--glow-gold); }
+.pay-option-head { display: flex; align-items: center; gap: var(--space-sm); }
+.pay-icon { width: 2.5rem; height: 2.5rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg); background: var(--surface-container-lowest); color: var(--primary); }
+.pay-icon.muted { color: var(--on-surface-variant); }
+.pay-icon .material-symbols-outlined { font-size: 1.5rem; }
+.pay-name { flex: 1; min-width: 0; }
+.pay-name > div { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.pay-name strong { font-size: 0.9375rem; }
+.pay-name p { font-size: 0.75rem; color: var(--on-surface-variant); margin-top: 0.15rem; }
+.radio { width: 1.25rem; height: 1.25rem; flex-shrink: 0; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; }
+.radio i { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--surface-dim); }
+.pay-option.active .radio { background: var(--primary); }
+.pay-option.active .radio i { background: var(--surface-dim); }
+.qr-panel { display: none; flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; margin-top: var(--space-md); background: var(--surface-container-lowest); border-radius: var(--radius-lg); padding: var(--space-md); }
+.pay-option.active .qr-panel { display: flex; }
+.qr-box { background: var(--surface-dim); border-radius: var(--radius-lg); padding: 0.75rem; margin-bottom: 0.4rem; }
+.qr-box svg { width: 10rem; height: 10rem; color: var(--on-surface); }
+.qr-panel > .font-label { font-size: 0.625rem; }
+.qr-panel p { font-size: 0.75rem; }
+
+/* ---------- Pay action ---------- */
+.pay-action { display: flex; flex-direction: column; gap: 0.5rem; padding-top: var(--space-xs); }
+.pay-action p { display: flex; align-items: center; justify-content: center; gap: 0.3rem; font-size: 0.6875rem; }
+.pay-action p .material-symbols-outlined { font-size: 0.875rem; }
+
+/* ---------- Success banner ---------- */
+.success-banner { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: var(--surface-container-lowest); border-radius: var(--radius-xl); padding: 0.7rem 0.85rem; box-shadow: var(--shadow-sm); }
+.success-banner > div { display: flex; align-items: center; gap: 0.6rem; }
+.success-banner > div > .material-symbols-outlined { font-size: 1.4rem; color: var(--primary); }
+.success-banner strong { display: block; color: var(--primary); font-size: 0.6875rem; }
+.success-banner p { font-size: 0.6875rem; color: var(--on-surface-variant); }
+
+/* ---------- Ticket ---------- */
+.ticket { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); background: var(--surface-container); }
+.ticket-hero { position: relative; height: 11rem; background-color: var(--surface-container-high); background-size: cover; background-position: center; }
+.ticket-hero-scrim { position: absolute; inset: 0; background: linear-gradient(to top, var(--surface-container) 2%, rgba(28, 31, 42, 0.5) 60%, transparent); }
+.ticket-watermark { position: absolute; top: 0.75rem; left: 1rem; color: var(--primary); }
+.ticket-watermark .material-symbols-outlined { font-size: 0.875rem; }
+.ticket-hero-bottom { position: absolute; bottom: 0.75rem; left: 1rem; right: 1rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 0.5rem; }
+.ticket-hero-bottom h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 500; margin-top: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ticket-specs { padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md); }
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: var(--surface-container-high); border-radius: var(--radius-lg); padding: 0.75rem; }
+.spec-grid > div { min-width: 0; }
+.spec-grid .font-label, .mini-grid .font-label { font-size: 0.5625rem; }
+.spec-grid strong, .mini-grid strong { display: block; font-size: 0.9375rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.1rem; }
+.spec-grid p { font-size: 0.6875rem; color: var(--on-surface-variant); }
+.mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; background: var(--surface-container-lowest); border-radius: var(--radius-lg); padding: 0.75rem; text-align: center; }
+.perforation { position: relative; height: 2rem; display: flex; align-items: center; background: var(--surface-container); }
+.notch { width: 1rem; height: 2rem; background: var(--surface); flex-shrink: 0; }
+.notch.left { border-radius: 0 var(--radius-full) var(--radius-full) 0; margin-left: -0.1rem; }
+.notch.right { border-radius: var(--radius-full) 0 0 var(--radius-full); margin-right: -0.1rem; }
+.cut-line { flex: 1; border-bottom: 2px dashed rgba(79, 70, 51, 0.7); margin-inline: 0.5rem; }
+.ticket-stub { background: var(--surface-container-low); padding: var(--space-md); display: flex; flex-direction: column; align-items: center; gap: var(--space-md); text-align: center; }
+.booking-code { display: flex; align-items: center; gap: 0.5rem; }
+.booking-code .font-label { font-size: 0.625rem; }
+.booking-code strong { color: var(--primary); background: var(--surface-container-lowest); padding: 0.25rem 0.6rem; border-radius: var(--radius); font-size: 0.75rem; letter-spacing: 0.05em; }
+.qr-substrate { width: 100%; background: #f8fafc; border-radius: var(--radius-lg); padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; box-shadow: inset 0 1px 4px rgba(0,0,0,0.2); }
+.qr-substrate svg { width: 11rem; height: 11rem; color: #0b0f19; }
+.barcode { width: 100%; display: flex; align-items: center; justify-content: space-between; padding-inline: 0.5rem; }
+.barcode i { height: 2rem; background: #0b0f19; display: block; }
+.barcode-num { font-family: ui-monospace, monospace; font-size: 0.6875rem; color: #334155; letter-spacing: 0.1em; }
+.brightness-hint { display: flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; color: var(--on-surface-variant); }
+.brightness-hint .material-symbols-outlined { font-size: 1rem; color: var(--primary); }
+.fnb-note { width: 100%; display: flex; align-items: center; gap: 0.5rem; background: var(--surface-container-high); border-radius: var(--radius-lg); padding: 0.6rem 0.75rem; text-align: left; }
+.fnb-note .material-symbols-outlined { color: var(--primary); font-size: 1.25rem; flex-shrink: 0; }
+.fnb-note strong { display: block; font-size: 0.75rem; }
+.fnb-note p { font-size: 0.6875rem; color: var(--on-surface-variant); }
+.ticket-actions { display: flex; flex-direction: column; gap: var(--space-sm); padding-top: var(--space-xs); }
+
+@media (min-width: 768px) {
+  .switcher { max-width: 32rem; margin-inline: auto; }
+  .view { max-width: 40rem; margin-inline: auto; }
+  .qr-box svg { width: 12rem; height: 12rem; }
+  .ticket-hero { height: 14rem; }
+  .ticket-hero-bottom h2 { font-size: 2.1rem; }
+  .qr-substrate svg { width: 13rem; height: 13rem; }
+}

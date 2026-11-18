@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f131d" />
+    <meta
+      name="description"
+      content="CinePass — pesan tiket bioskop, pilih kursi, dan dapatkan e-ticket dengan mudah."
+    />
+    <title>CinePass — Beranda Bioskop</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../static/css/global.css" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+  </head>
+  <body data-page="home">
+    <!-- ===== Shared Header ===== -->
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <span class="material-symbols-outlined brand-mark"
+            >local_activity</span
+          >
+          <div class="brand-meta">
+            <span class="brand-name">CinePass</span>
+            <button
+              class="location-btn"
+              id="location-btn"
+              aria-label="Ubah lokasi"
+            >
+              <span class="material-symbols-outlined">location_on</span>
+              <span>Jakarta Pusat</span>
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="icon-btn notification-btn" aria-label="Notifikasi">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="notification-dot"></span>
+          </button>
+          <img
+            class="avatar"
+            alt="Foto profil"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUXBSYAu91mm6JlT57Kt84VDWH5zW_n5_NAqDsIItU7hEGf9joowRvbCa_SpISQRUVegKPlSK3uYN4W7T5VG8ST8Jl35WLL4oyZIA9UhQFzW63IKpJU6qGT2We-NxeP2kzOSg_8uUPRyAZt3BKA_DrNP5gwMtMuvuB1ANWrDVkiweB9h_ejqYkZxW6EXlT_-FddgRuauQDHd7B36n5Em2HAzLDTk6vP6TfABtuhPl"
+          />
+          <nav class="desktop-nav" aria-label="Navigasi utama">
+            <a href="index.html" data-nav="home" class="active">Beranda</a>
+            <a href="#bioskop">Bioskop</a>
+            <a href="pembayaran.html" data-nav="tickets">Tiket Saya</a>
+            <a href="#profil" data-nav="profile">Profil</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main page-wrap">
+      <!-- Search bar -->
+      <section class="section home-search">
+        <div class="search-box">
+          <span class="material-symbols-outlined">search</span>
+          <input
+            type="search"
+            id="movie-search"
+            placeholder="Cari film, bioskop, atau genre..."
+            aria-label="Cari film"
+          />
+          <button
+            class="voice-btn"
+            aria-label="Cari dengan suara"
+            id="voice-btn"
+          >
+            <span class="material-symbols-outlined">mic</span>
+          </button>
+        </div>
+        <button
+          class="filter-btn"
+          aria-label="Filter pencarian"
+          id="filter-btn"
+        >
+          <span class="material-symbols-outlined">tune</span>
+        </button>
+      </section>
+
+      <!-- Promo banner -->
+      <section class="section">
+        <div class="promo-banner">
+          <div class="promo-glow"></div>
+          <div class="promo-copy">
+            <span class="badge badge-gold">
+              <span class="material-symbols-outlined">auto_awesome</span>
+              Presale Eksklusif
+            </span>
+            <h3 class="promo-title">Diskon 50% Tiket Premiere &amp; IMAX</h3>
+            <p class="promo-sub">Gunakan kode: <strong>VIPCINEMA50</strong></p>
+          </div>
+          <button class="btn btn-primary promo-claim" id="claim-btn">
+            Klaim
+          </button>
+        </div>
+      </section>
+
+      <!-- Tab filter -->
+      <section class="section">
+        <div
+          class="tab-rail no-scrollbar"
+          role="tablist"
+          aria-label="Filter film"
+        >
+          <button
+            class="tab active"
+            role="tab"
+            aria-selected="true"
+            data-filter="now"
+          >
+            <span class="material-symbols-outlined">play_circle</span>
+            Sedang Tayang
+            <span class="tab-count">18</span>
+          </button>
+          <button
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            data-filter="soon"
+          >
+            <span class="material-symbols-outlined">schedule</span>
+            Segera Tayang
+          </button>
+          <button
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            data-filter="imax"
+          >
+            <span class="material-symbols-outlined">movie_filter</span>
+            IMAX Experience
+          </button>
+        </div>
+      </section>
+
+      <!-- Featured hero -->
+      <section class="section">
+        <article class="feature-card">
+          <div
+            class="feature-media"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDSEtkFXdNglB8c3jJD-TLSwTEeysytByRLc5EU0mf0h1QF0olPU62ZWZLNzwlSsCr0sGyrhNFRAuDFf9nBSHHvRFIewArE6ZdaROxytjNrjU9nUhn91g_rNhzOUKkJ3nHNPSqfUVdZQKmp-Hvj9MKt2hP0ta4E8Ha0dqMSx5jPubDXChdtHOlY20VYUe0sdVtkUCllWRh03Dx1Qk_g0R5MdxdvR6XgeBwX74A513Iv&quot;);
+            "
+          >
+            <div class="feature-scrim"></div>
+            <div class="feature-badges">
+              <span class="badge badge-dark">IMAX 2D</span>
+              <span class="badge badge-dark">17+</span>
+            </div>
+            <div class="feature-rating">
+              <span class="material-symbols-outlined filled">star</span>
+              <strong>8.9</strong>
+            </div>
+          </div>
+          <div class="feature-body">
+            <div class="feature-meta">
+              <span>Sci-Fi / Adventure</span><span>•</span
+              ><span>166 Menit</span>
+            </div>
+            <h2 class="feature-title">Dune: Part Two</h2>
+            <p class="feature-desc clamp-2">
+              Paul Atreides bersatu dengan Chani dan Fremen untuk membalas
+              dendam terhadap para konspirator yang menghancurkan keluarganya.
+            </p>
+            <div class="feature-actions">
+              <a
+                class="btn btn-primary btn-lg feature-cta"
+                href="detail-film.html"
+              >
+                <span class="material-symbols-outlined"
+                  >confirmation_number</span
+                >
+                Beli Tiket
+              </a>
+              <button
+                class="trailer-btn"
+                aria-label="Tonton trailer"
+                id="trailer-btn"
+              >
+                <span class="material-symbols-outlined">play_arrow</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Popular movies rail -->
+      <section class="section movies-section">
+        <div class="section-heading">
+          <div class="section-title-row">
+            <h2>Sedang Populer</h2>
+            <span class="badge badge-gold">Hot</span>
+          </div>
+          <a href="#" class="link-arrow" id="see-all"
+            >Lihat Semua
+            <span class="material-symbols-outlined">chevron_right</span></a
+          >
+        </div>
+        <div class="movie-rail no-scrollbar" id="movie-rail">
+          <article class="movie-card" data-genre="action">
+            <div
+              class="movie-poster"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCjSslDiPIubt3Xl_P9Cs-xaHndpFHzM2bd95lWPAGDZO8DV2GjeMk7GhHb1LKNPBxP1TiN8wRRqPgY46c5Vm2GLobxVRr6-wmxcgD8usnEYEn6EDBqDmqJGGKGJ3_hM-ilsAu1A1WepWt7BiqHC7gdfgam1JaFnEIZaBXnN6jw1kCdxfPpbabYetAVweWpEgd8bp-EV3GvO8dslRpUsY_vJfXhPc8LMs15IR99pXRV&quot;);
+              "
+            >
+              <span class="badge badge-dark poster-age">13+</span>
+              <span class="poster-rating"
+                ><span class="material-symbols-outlined filled">star</span>
+                8.4</span
+              >
+              <span class="badge badge-solid poster-status">Presale Buka</span>
+            </div>
+            <div class="movie-info">
+              <h3>Godzilla x Kong</h3>
+              <p>Action / Sci-Fi</p>
+              <button
+                class="btn btn-secondary btn-order"
+                data-movie="Godzilla x Kong"
+              >
+                Pesan
+              </button>
+            </div>
+          </article>
+
+          <article class="movie-card" data-genre="animation">
+            <div
+              class="movie-poster"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBzWl_dY63A0iR-maMdaLiKU8HUhqlEn4DydkCt3HaAXlYbu0pwJQSKE9HvNpOQ_-lgQFC-h8sS50p7V7i74Xi_nntsUzuRyygGd32wWoIK8MDiXAUR0DP_GVtdnIFg8ievpY5QKXEty4-lN76X3EMTmTc1VfSi_SyQ0p3h3rGa8OidQYoPmdB3_CgOq6Tp1H7rqgeV0aG7bwp-2B5BC4YfAWILcfBTCONTCm4B8gIz&quot;);
+              "
+            >
+              <span class="badge badge-dark poster-age">SU</span>
+              <span class="poster-rating"
+                ><span class="material-symbols-outlined filled">star</span>
+                8.1</span
+              >
+            </div>
+            <div class="movie-info">
+              <h3>Kung Fu Panda 4</h3>
+              <p>Animation / Comedy</p>
+              <button
+                class="btn btn-secondary btn-order"
+                data-movie="Kung Fu Panda 4"
+              >
+                Pesan
+              </button>
+            </div>
+          </article>
+
+          <article class="movie-card" data-genre="action">
+            <div
+              class="movie-poster"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBRLODXEjTe_ZusMB3QTDOKx0_Ut2jm0bsCZlzdfCdkndKKYInbGlHe6rfyU5dpahKTznaRUXh90dTd1eeNIDsPoaJDpBUrJFyZgU0F3knbKLihzK9egWVXZ0kWztAngsDyIASHA5Uhc2Zu0cj4m7BkW2zaBbgL5_Aai3YUlp82-UopXUR8ZIO8ky-_chEMaIluTBNmR6a1NU4WMW6cwxOdw4vsmHaVXR3VVjaPv4fl&quot;);
+              "
+            >
+              <span class="badge badge-dark poster-age">17+</span>
+              <span class="poster-rating"
+                ><span class="material-symbols-outlined filled">star</span>
+                8.3</span
+              >
+            </div>
+            <div class="movie-info">
+              <h3>Civil War</h3>
+              <p>Action / Thriller</p>
+              <button
+                class="btn btn-secondary btn-order"
+                data-movie="Civil War"
+              >
+                Pesan
+              </button>
+            </div>
+          </article>
+
+          <article class="movie-card" data-genre="horror">
+            <div
+              class="movie-poster"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD4lLvVOAyUCbUyzbvvfnHokzDrkqHDAV6AmyzPdNotuVi2wSuUfkhTUMEAH_UQk1MsH0_apwP_m-i_F8yZrS5vbbYNe2sSIp7zgyb8EjC2ElxX1HAMSX7VB-kcSsHAtCweGAbmUjJT85FRGZwLZNVeF1UySP_XM8f1SXCHg4RMABBCYRlG5_YzFTYVZmRlHxTt_0zng1RNsZH_0y3znVt9JQmPsjpYS0S8Cxw2jxYS&quot;);
+              "
+            >
+              <span class="badge badge-dark poster-age">21+</span>
+              <span class="poster-rating"
+                ><span class="material-symbols-outlined filled">star</span>
+                8.2</span
+              >
+            </div>
+            <div class="movie-info">
+              <h3>Siksa Kubur</h3>
+              <p>Horror / Mystery</p>
+              <button
+                class="btn btn-secondary btn-order"
+                data-movie="Siksa Kubur"
+              >
+                Pesan
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Nearby cinemas -->
+      <section class="section" id="bioskop">
+        <div class="section-heading">
+          <div class="section-title-row">
+            <span class="material-symbols-outlined text-primary">near_me</span>
+            <h2>Bioskop Terdekat</h2>
+          </div>
+          <a href="#" class="link-arrow" id="manage-location">Kelola Lokasi</a>
+        </div>
+        <div class="cinema-list">
+          <article class="cinema-card" data-cinema="Grand Indonesia XXI">
+            <div class="cinema-icon">
+              <span class="material-symbols-outlined">theaters</span>
+            </div>
+            <div class="cinema-info">
+              <div class="cinema-name-row">
+                <h3>Grand Indonesia XXI</h3>
+                <span class="cinema-distance">• 1.2 km</span>
+              </div>
+              <p>Jl. M.H. Thamrin No.1, Jakarta Pusat</p>
+              <div class="facility-tags">
+                <span class="facility-tag gold">IMAX</span>
+                <span class="facility-tag">Premiere</span>
+                <span class="facility-tag">Dolby Atmos</span>
+              </div>
+            </div>
+            <button class="cinema-go" aria-label="Buka jadwal bioskop">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </article>
+
+          <article class="cinema-card" data-cinema="CGV FX Sudirman">
+            <div class="cinema-icon">
+              <span class="material-symbols-outlined">theaters</span>
+            </div>
+            <div class="cinema-info">
+              <div class="cinema-name-row">
+                <h3>CGV FX Sudirman</h3>
+                <span class="cinema-distance">• 2.4 km</span>
+              </div>
+              <p>Jl. Jend. Sudirman, Senayan, Jakarta</p>
+              <div class="facility-tags">
+                <span class="facility-tag gold">4DX</span>
+                <span class="facility-tag">Velvet Class</span>
+                <span class="facility-tag">ScreenX</span>
+              </div>
+            </div>
+            <button class="cinema-go" aria-label="Buka jadwal bioskop">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Shared bottom navigation ===== -->
+    <nav class="bottom-nav" aria-label="Navigasi bawah">
+      <div class="bottom-nav-inner">
+        <a href="index.html" data-nav="home" class="active"
+          ><span class="material-symbols-outlined">movie</span>Home</a
+        >
+        <a href="#bioskop" data-nav="cinemas"
+          ><span class="material-symbols-outlined">location_on</span>Cinemas</a
+        >
+        <a href="pembayaran.html" data-nav="tickets"
+          ><span class="material-symbols-outlined">confirmation_number</span
+          >Tickets</a
+        >
+        <a href="#profil" data-nav="profile"
+          ><span class="material-symbols-outlined">person</span>Profile</a
+        >
+      </div>
+    </nav>
+
+    <script src="../static/js/global.js"></script>
+    <script src="../static/js/index.js"></script>
+  </body>
+</html>

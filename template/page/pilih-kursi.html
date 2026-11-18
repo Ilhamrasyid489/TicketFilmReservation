@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f131d" />
+  <meta name="description" content="Pilih kursi favorit Anda di CinePass." />
+  <title>Pilih Kursi — CinePass</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/pilih-kursi.css" />
+</head>
+<body data-page="seats">
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <button class="icon-btn back-btn" data-back="detail-film.html" aria-label="Kembali">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <span class="material-symbols-outlined brand-mark">local_activity</span>
+        <h1 class="header-title">Pilih Kursi</h1>
+      </div>
+      <div class="header-actions">
+        <img class="avatar" alt="Foto profil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUXBSYAu91mm6JlT57Kt84VDWH5zW_n5_NAqDsIItU7hEGf9joowRvbCa_SpISQRUVegKPlSK3uYN4W7T5VG8ST8Jl35WLL4oyZIA9UhQFzW63IKpJU6qGT2We-NxeP2kzOSg_8uUPRyAZt3BKA_DrNP5gwMtMuvuB1ANWrDVkiweB9h_ejqYkZxW6EXlT_-FddgRuauQDHd7B36n5Em2HAzLDTk6vP6TfABtuhPl" />
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main page-wrap seat-main">
+    <div class="seat-content">
+
+      <!-- Movie / theater info -->
+      <section class="seat-info-head">
+        <div class="min-w">
+          <div class="info-tags">
+            <span class="badge badge-outline" id="seat-format">IMAX 2D</span>
+            <span class="text-muted" style="font-size:0.625rem">Rating 17+</span>
+          </div>
+          <h2 class="seat-movie-title" id="seat-movie">Dune: Part Two</h2>
+          <p class="seat-location"><span class="material-symbols-outlined">theater_comedy</span><span id="seat-cinema">Grand Indonesia XXI • Studio IMAX 1</span></p>
+        </div>
+        <div class="schedule-box">
+          <span class="font-label">Jadwal</span>
+          <strong id="seat-time">15:45</strong>
+          <small>Hari ini</small>
+        </div>
+      </section>
+
+      <!-- Control bar -->
+      <div class="seat-control-bar">
+        <span class="control-hint"><span class="material-symbols-outlined">pinch</span> Cubit atau geser untuk jelajahi kursi</span>
+        <div class="ticket-counter">
+          <button id="btn-minus" aria-label="Kurangi tiket"><span class="material-symbols-outlined">remove</span></button>
+          <span id="ticket-count">2 Kursi</span>
+          <button id="btn-plus" aria-label="Tambah tiket"><span class="material-symbols-outlined">add</span></button>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <section class="seat-legend no-scrollbar">
+        <span><i class="legend-box available"></i> Tersedia</span>
+        <span><i class="legend-box selected"></i> <b>Terpilih</b></span>
+        <span><i class="legend-box occupied"><span class="material-symbols-outlined">close</span></i> Terisi</span>
+        <span><i class="legend-box vip"><span class="material-symbols-outlined">star</span></i> VIP Sweetbox</span>
+      </section>
+
+      <!-- Auditorium -->
+      <section class="auditorium">
+        <div class="screen-wrap">
+          <svg class="screen-svg" viewBox="0 0 320 36" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="screenGlow" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="#ffd165" stop-opacity="0.1" />
+                <stop offset="30%" stop-color="#ffd165" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#ffd165" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#ffd165" stop-opacity="0.1" />
+              </linearGradient>
+              <linearGradient id="projectionBeam" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#ffd165" stop-opacity="0.22" />
+                <stop offset="100%" stop-color="#ffd165" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <polygon points="20,8 300,8 320,36 0,36" fill="url(#projectionBeam)" opacity="0.45" />
+            <path d="M 10 24 Q 160 2 310 24" fill="none" stroke="url(#screenGlow)" stroke-width="3" stroke-linecap="round" />
+          </svg>
+          <span class="screen-label">Layar Bioskop / IMAX Screen</span>
+          <div class="screen-line"></div>
+        </div>
+
+        <!-- Seat map generated by JS -->
+        <div class="seat-map-scroll no-scrollbar">
+          <div class="seat-map" id="seat-map"></div>
+        </div>
+      </section>
+
+      <!-- Facility note -->
+      <section class="section facility-note">
+        <div class="card facility-card">
+          <div class="facility-icon"><span class="material-symbols-outlined">volume_up</span></div>
+          <div><h4>Dolby Atmos &amp; Laser IMAX</h4><p>Kualitas audio 360° dan proyeksi 4K tajam</p></div>
+          <span class="material-symbols-outlined gold">verified</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Sticky purchase sheet -->
+  <aside class="purchase-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-row">
+      <div>
+        <span class="font-label text-muted">Kursi Terpilih (<span id="selected-count">2</span> Tiket)</span>
+        <div class="selected-badges" id="selected-badges"></div>
+      </div>
+      <div class="unit-price"><span class="font-label text-muted">Harga Satuan</span><strong id="unit-price">Rp 75.000</strong></div>
+    </div>
+    <div class="sheet-actions">
+      <div class="total-block"><span>Total Pembayaran</span><strong id="total-price">Rp 150.000</strong></div>
+      <button class="btn btn-primary checkout-btn" id="btn-checkout">
+        Lanjut ke Bayar <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+  </aside>
+
+  <script src="js/global.js"></script>
+  <script src="js/pilih-kursi.js"></script>
+</body>
+</html>

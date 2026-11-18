@@ -1,0 +1,303 @@
+/* ============================================================
+   CinePass — Home / Catalog page styles
+   ============================================================ */
+
+.brand-mark {
+  color: var(--primary);
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+/* ---------- Search ---------- */
+.home-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+}
+.search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--surface-container-low);
+  border-radius: var(--radius-xl);
+  padding: 0.35rem 0.5rem 0.35rem 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, outline 0.2s ease;
+  min-width: 0;
+}
+.search-box:focus-within { outline: 1px solid var(--primary-container); }
+.search-box > .material-symbols-outlined { color: var(--outline); font-size: 1.25rem; flex-shrink: 0; }
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0.35rem 0.25rem;
+  font-size: 0.875rem;
+  color: var(--on-surface);
+}
+.search-box input::placeholder { color: var(--outline); }
+.voice-btn { color: var(--on-surface-variant); display: flex; padding: 0.25rem; transition: color 0.2s ease; }
+.voice-btn:hover { color: var(--primary); }
+.filter-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-container);
+  color: var(--primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.2s ease;
+}
+.filter-btn:hover { background: var(--surface-container-high); }
+
+/* ---------- Promo banner ---------- */
+.promo-banner {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  background: linear-gradient(100deg, var(--surface-container), var(--surface-container-high), var(--surface-container));
+  border: var(--hairline);
+  border-radius: var(--radius-xl);
+  padding: 1rem;
+  box-shadow: var(--shadow-md);
+}
+.promo-glow {
+  position: absolute;
+  right: -2.5rem;
+  bottom: -2.5rem;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  background: rgba(234, 179, 8, 0.12);
+  filter: blur(2rem);
+  pointer-events: none;
+}
+.promo-copy { position: relative; z-index: 1; max-width: 72%; display: flex; flex-direction: column; gap: 0.4rem; }
+.promo-copy .badge .material-symbols-outlined { font-size: 0.875rem; }
+.promo-title { font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
+.promo-sub { font-size: 0.75rem; color: var(--on-surface-variant); }
+.promo-sub strong { color: var(--primary); }
+.promo-claim {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  padding: 0.55rem 1rem;
+  font-size: 0.75rem;
+}
+
+/* ---------- Tab rail ---------- */
+.tab-rail {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-block: 0.2rem;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-xl);
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.tab .material-symbols-outlined { font-size: 1rem; }
+.tab:hover { color: var(--on-surface); }
+.tab.active { background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow-sm); }
+.tab-count {
+  font-size: 0.625rem;
+  font-weight: 800;
+  background: rgba(63, 46, 0, 0.2);
+  border-radius: var(--radius-full);
+  padding: 0.05rem 0.35rem;
+}
+
+/* ---------- Featured card ---------- */
+.feature-card {
+  background: var(--surface-container);
+  border: var(--hairline);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.feature-media {
+  position: relative;
+  height: 17rem;
+  background-color: var(--surface-container-low);
+  background-size: cover;
+  background-position: center;
+}
+.feature-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface-container) 2%, rgba(28, 31, 42, 0.55) 55%, transparent);
+}
+.feature-badges { position: absolute; top: 0.75rem; left: 0.75rem; display: flex; gap: 0.5rem; }
+.feature-rating {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(10, 14, 24, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-size: 0.8125rem;
+}
+.feature-rating .filled { font-size: 0.875rem; }
+.filled { font-variation-settings: "FILL" 1; }
+.feature-body { position: relative; margin-top: -1.5rem; padding: 1rem; display: flex; flex-direction: column; gap: 0.65rem; }
+.feature-meta { display: flex; gap: 0.45rem; font-size: 0.75rem; color: var(--on-surface-variant); }
+.feature-title { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+.feature-desc { font-size: 0.8125rem; color: var(--on-surface-variant); }
+.feature-actions { display: flex; gap: 0.65rem; padding-top: 0.25rem; }
+.feature-cta { flex: 1; }
+.trailer-btn {
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-container-high);
+  border-radius: var(--radius-lg);
+  transition: background-color 0.2s ease;
+}
+.trailer-btn:hover { background: var(--surface-bright); }
+.trailer-btn .material-symbols-outlined { font-size: 1.4rem; }
+
+/* ---------- Movie rail ---------- */
+.link-arrow { display: inline-flex; align-items: center; gap: 0.1rem; color: var(--primary); font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.link-arrow:hover { text-decoration: underline; }
+.link-arrow .material-symbols-outlined { font-size: 1rem; }
+.movie-rail { display: flex; gap: 1rem; overflow-x: auto; padding: 0 var(--gutter) 0.5rem; }
+@media (min-width: 768px) { .movie-rail { padding-inline: var(--gutter-lg); } }
+.movie-card {
+  width: 11rem;
+  flex-shrink: 0;
+  background: var(--surface-container);
+  border: var(--hairline);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+.movie-poster {
+  position: relative;
+  height: 14rem;
+  background-color: var(--surface-container-high);
+  background-size: cover;
+  background-position: center;
+}
+.movie-poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28, 31, 42, 0.85), transparent 55%);
+}
+.poster-age { position: absolute; top: 0.5rem; left: 0.5rem; z-index: 1; }
+.poster-rating {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  background: rgba(10, 14, 24, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 0.15rem 0.4rem;
+  color: var(--primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+.poster-rating .material-symbols-outlined { font-size: 0.75rem; }
+.poster-status { position: absolute; bottom: 0.5rem; left: 0.5rem; z-index: 1; }
+.movie-info { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.65rem; flex: 1; }
+.movie-info h3 { font-size: 0.9375rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.movie-info p { font-size: 0.75rem; color: var(--on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.btn-order { width: 100%; padding: 0.45rem; font-size: 0.75rem; }
+.btn-order:hover { background: var(--primary); color: var(--on-primary); }
+
+/* ---------- Cinema list ---------- */
+.cinema-list { display: flex; flex-direction: column; gap: 0.75rem; }
+@media (min-width: 768px) {
+  .cinema-list { display: grid; grid-template-columns: repeat(2, 1fr); }
+}
+.cinema-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--surface-container);
+  border: var(--hairline);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+.cinema-card:hover { background: var(--surface-container-high); border-color: rgba(234, 179, 8, 0.35); }
+.cinema-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: var(--surface-container-high);
+  color: var(--primary);
+}
+.cinema-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+.cinema-name-row { display: flex; align-items: baseline; gap: 0.4rem; min-width: 0; }
+.cinema-name-row h3 { font-size: 0.9375rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cinema-distance { font-size: 0.75rem; color: var(--on-surface-variant); flex-shrink: 0; }
+.cinema-info > p { font-size: 0.75rem; color: var(--outline); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.facility-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; padding-top: 0.25rem; }
+.facility-tag { font-size: 0.625rem; font-weight: 600; padding: 0.1rem 0.45rem; border-radius: var(--radius); background: var(--surface-container-highest); color: var(--on-surface-variant); }
+.facility-tag.gold { color: var(--primary); }
+.cinema-go {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--surface-container-high);
+  color: var(--on-surface);
+  transition: color 0.2s ease;
+}
+.cinema-card:hover .cinema-go { color: var(--primary); }
+
+/* ---------- Desktop enhancements ---------- */
+@media (min-width: 768px) {
+  .home-search { padding-top: var(--space-md); max-width: 42rem; }
+  .promo-banner { padding: 1.25rem 1.5rem; }
+  .promo-title { font-size: 1.35rem; }
+  .feature-media { height: 24rem; }
+  .feature-body { margin-top: -2rem; padding: 1.5rem; }
+  .feature-title { font-size: 2.25rem; }
+  .movie-card { width: 13rem; }
+  .movie-poster { height: 16.5rem; }
+  .tab { padding: 0.65rem 1.1rem; font-size: 0.875rem; }
+}

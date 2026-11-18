@@ -1,0 +1,244 @@
+/* ============================================================
+   CinePass — Movie detail & schedule page styles
+   ============================================================ */
+
+.filled { font-variation-settings: "FILL" 1; }
+.gold { color: var(--primary); }
+.detail-content { padding-bottom: var(--space-lg); }
+
+/* ---------- Hero ---------- */
+.hero-backdrop {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  background-color: var(--surface-container-lowest);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface) 1%, rgba(15, 19, 29, 0.5) 55%, transparent),
+              linear-gradient(to right, rgba(15, 19, 29, 0.7), transparent 30%, transparent 70%, rgba(15, 19, 29, 0.7));
+}
+.play-trailer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(234, 179, 8, 0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(234, 179, 8, 0.5);
+  transition: transform 0.2s ease;
+}
+.play-trailer:hover { transform: translate(-50%, -50%) scale(1.08); }
+.play-trailer .material-symbols-outlined {
+  font-size: 1.75rem;
+  font-variation-settings: "FILL" 1;
+  color: var(--on-primary-container);
+  background: var(--primary-container);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.15rem;
+}
+.hero-badge { position: absolute; top: 1rem; right: 1rem; color: var(--primary); }
+
+/* ---------- Title block ---------- */
+.title-block {
+  position: relative;
+  padding: 0 var(--gutter);
+  margin-top: -4rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.title-row { display: flex; gap: var(--space-md); align-items: flex-end; }
+.mini-poster {
+  position: relative;
+  width: 7rem;
+  height: 10rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-container-high);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-lg);
+}
+.mini-poster-tag {
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
+  background: rgba(10, 14, 24, 0.9);
+  color: var(--primary);
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius);
+}
+.title-meta { flex: 1; min-width: 0; padding-bottom: 0.15rem; }
+.official-tag { display: flex; align-items: center; gap: 0.3rem; color: var(--primary); font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+.official-tag .material-symbols-outlined { font-size: 1rem; }
+.movie-title { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 500; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.movie-tagline { font-size: 0.75rem; color: var(--on-surface-variant); margin-top: 0.1rem; }
+.movie-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+
+.specs-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--surface-container-low);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 0.7rem 0.85rem;
+}
+.spec { display: flex; align-items: center; gap: 0.45rem; font-size: 0.75rem; font-weight: 600; }
+.spec .material-symbols-outlined { font-size: 1.25rem; color: var(--primary); }
+.spec.gold, .spec.gold .material-symbols-outlined { color: var(--primary); }
+.spec-divider { width: 1px; height: 1rem; background: var(--surface-variant); }
+
+.rating-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.rating-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--surface-container-low);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 0.4rem;
+  text-align: center;
+}
+.rating-value { display: flex; align-items: center; gap: 0.25rem; color: var(--primary); }
+.rating-value .material-symbols-outlined { font-size: 1.1rem; }
+.rating-value strong { font-size: 1.05rem; font-weight: 800; }
+.rating-value small { font-size: 0.6875rem; color: var(--on-surface-variant); }
+.rating-cell > .font-label { font-size: 0.5625rem; color: var(--on-surface-variant); }
+
+/* ---------- Synopsis ---------- */
+.synopsis-card .section-heading { margin-bottom: 0.6rem; }
+.synopsis-card .section-heading h3 { font-size: 1.25rem; }
+.synopsis-text { font-size: 0.8125rem; color: var(--on-surface-variant); transition: all 0.3s ease; }
+.synopsis-toggle { display: inline-flex; align-items: center; gap: 0.2rem; margin-top: 0.5rem; padding: 0; }
+.synopsis-toggle .material-symbols-outlined { font-size: 1rem; transition: transform 0.2s ease; }
+.synopsis-toggle.expanded .material-symbols-outlined { transform: rotate(180deg); }
+.cast-block { margin-top: 1rem; padding-top: 0.75rem; border-top: var(--hairline); }
+.cast-block > p { margin-bottom: 0.5rem; }
+.cast-rail { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.25rem; }
+.cast-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.35rem;
+  background: var(--surface-container-high);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+.cast-chip img, .cast-director { width: 1.5rem; height: 1.5rem; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.cast-director { display: flex; align-items: center; justify-content: center; background: var(--surface-container-highest); color: var(--secondary); }
+.cast-director .material-symbols-outlined { font-size: 1rem; }
+.cast-chip div { display: flex; flex-direction: column; }
+.cast-chip strong { font-size: 0.6875rem; font-weight: 700; line-height: 1.2; }
+.cast-chip small { font-size: 0.5625rem; color: var(--primary); line-height: 1.2; }
+
+/* ---------- Date selector ---------- */
+.section-heading .font-label { display: inline-flex; align-items: center; gap: 0.2rem; }
+.section-heading .font-label .material-symbols-outlined { font-size: 1rem; }
+.date-rail { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.25rem 0; }
+.date-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-container-high);
+  color: var(--on-surface);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.date-chip span { font-size: 0.625rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-surface-variant); }
+.date-chip strong { font-size: 1.05rem; font-weight: 800; margin: 0.1rem 0; }
+.date-chip:hover { background: var(--surface-bright); }
+.date-chip.active { background: var(--primary-container); color: var(--on-primary-container); box-shadow: 0 0 15px rgba(234, 179, 8, 0.4); }
+.date-chip.active span { color: rgba(96, 71, 0, 0.75); }
+
+/* ---------- Cinemas ---------- */
+.cinema-accordions { display: flex; flex-direction: column; gap: var(--space-md); }
+.accordion { background: var(--surface-container-low); border: var(--hairline); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm); }
+.accordion-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 1rem;
+  background: var(--surface-container);
+  text-align: left;
+}
+.accordion-head-left { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+.accordion-icon { width: 2.5rem; height: 2.5rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg); background: rgba(234, 179, 8, 0.15); color: var(--primary); }
+.accordion-icon.muted { background: var(--surface-container-high); color: var(--on-surface); }
+.accordion-icon .material-symbols-outlined { font-size: 1.5rem; }
+.accordion-head h4 { font-size: 0.9375rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.accordion-head p { display: flex; align-items: center; gap: 0.2rem; font-size: 0.75rem; color: var(--on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.accordion-head p .material-symbols-outlined { font-size: 0.875rem; color: var(--primary); flex-shrink: 0; }
+.accordion-chevron { color: var(--primary); font-size: 1.5rem; flex-shrink: 0; transition: transform 0.2s ease; }
+.accordion-body { display: none; padding: 1rem; flex-direction: column; }
+.accordion.open .accordion-body { display: flex; }
+.studio { display: flex; flex-direction: column; gap: 0.5rem; }
+.studio-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.studio-format { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+.studio-format > span:last-child { font-size: 0.6875rem; color: var(--on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.studio-head > strong { font-size: 0.9375rem; white-space: nowrap; }
+.showtime-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.showtime {
+  padding: 0.5rem 0.25rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-container-high);
+  color: var(--on-surface);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.showtime:hover { background: var(--surface-bright); }
+.showtime.selected { background: var(--primary); color: var(--on-primary); font-weight: 800; box-shadow: var(--glow-gold-strong); }
+.showtime.sold { display: flex; align-items: center; justify-content: center; opacity: 0.3; cursor: not-allowed; font-size: 0.8125rem; }
+.studio-divider { height: 1px; background: rgba(49, 53, 64, 0.5); margin: 1rem 0; }
+
+/* ---------- Sticky bar ---------- */
+.sticky-info { min-width: 0; flex: 1; }
+.sticky-cinema { display: flex; align-items: center; gap: 0.35rem; color: var(--primary); font-size: 0.75rem; font-weight: 700; min-width: 0; }
+.sticky-cinema .material-symbols-outlined { font-size: 1rem; flex-shrink: 0; }
+.sticky-cinema span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sticky-price-row { display: flex; align-items: baseline; gap: 0.3rem; margin-top: 0.1rem; flex-wrap: wrap; }
+.sticky-price-row > span { font-size: 0.75rem; color: var(--on-surface); }
+.sticky-price-row strong { font-size: 0.9375rem; color: var(--primary); white-space: nowrap; }
+.sticky-price-row small { font-size: 0.6875rem; font-weight: 400; color: var(--on-surface-variant); }
+.sticky-cta { padding: 0.75rem 1.25rem; flex-shrink: 0; }
+
+/* ---------- Desktop ---------- */
+@media (min-width: 768px) {
+  .hero-backdrop { height: 26rem; }
+  .title-block { padding: 0 var(--gutter-lg); margin-top: -5rem; }
+  .mini-poster { width: 9rem; height: 13rem; }
+  .movie-title { font-size: 2.1rem; }
+  .showtime-grid { gap: 0.75rem; }
+  .showtime { font-size: 1rem; padding: 0.65rem; }
+  .sticky-cta { padding: 0.85rem 1.75rem; font-size: 1rem; }
+  .sticky-price-row strong { font-size: 1.05rem; }
+  .sticky-cinema { font-size: 0.875rem; }
+}
