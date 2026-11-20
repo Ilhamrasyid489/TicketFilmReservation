@@ -1,217 +1,482 @@
 {% load static %}
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f131d" />
-  <meta name="description" content="Checkout pembayaran dan e-ticket CinePass Anda." />
-  <title>Pembayaran &amp; E-Ticket — CinePass</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f131d" />
+    <meta
+      name="description"
+      content="Checkout pembayaran dan e-ticket CinePass Anda."
+    />
+    <title>Pembayaran &amp; E-Ticket — CinePass</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="{% static 'css/global.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/pembayaran.css' %}" />
-</head>
-<body data-page="payment">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pembayaran.css' %}" />
+  </head>
+  <body data-page="payment">
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <button
+            class="icon-btn back-btn"
+            data-back="pilih-kursi.html"
+            aria-label="Kembali"
+          >
+            <span class="material-symbols-outlined">arrow_back</span>
+          </button>
+          <span class="material-symbols-outlined brand-mark"
+            >local_activity</span
+          >
+          <h1 class="header-title">Booking Checkout</h1>
+        </div>
+        <div class="header-actions">
+          <img
+            class="avatar"
+            alt="Foto profil"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUXBSYAu91mm6JlT57Kt84VDWH5zW_n5_NAqDsIItU7hEGf9joowRvbCa_SpISQRUVegKPlSK3uYN4W7T5VG8ST8Jl35WLL4oyZIA9UhQFzW63IKpJU6qGT2We-NxeP2kzOSg_8uUPRyAZt3BKA_DrNP5gwMtMuvuB1ANWrDVkiweB9h_ejqYkZxW6EXlT_-FddgRuauQDHd7B36n5Em2HAzLDTk6vP6TfABtuhPl"
+          />
+        </div>
+      </div>
+    </header>
 
-  <header class="app-header">
-    <div class="header-inner">
-      <div class="header-brand">
-        <button class="icon-btn back-btn" data-back="pilih-kursi.html" aria-label="Kembali">
-          <span class="material-symbols-outlined">arrow_back</span>
+    <main class="app-main page-wrap payment-main">
+      <div class="payment-glow"></div>
+
+      <!-- Segmented switcher -->
+      <div class="switcher">
+        <button class="switcher-tab active" id="tab-summary" data-tab="summary">
+          <span class="material-symbols-outlined">receipt_long</span> Ringkasan
+          Order
         </button>
-        <span class="material-symbols-outlined brand-mark">local_activity</span>
-        <h1 class="header-title">Booking Checkout</h1>
-      </div>
-      <div class="header-actions">
-        <img class="avatar" alt="Foto profil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUXBSYAu91mm6JlT57Kt84VDWH5zW_n5_NAqDsIItU7hEGf9joowRvbCa_SpISQRUVegKPlSK3uYN4W7T5VG8ST8Jl35WLL4oyZIA9UhQFzW63IKpJU6qGT2We-NxeP2kzOSg_8uUPRyAZt3BKA_DrNP5gwMtMuvuB1ANWrDVkiweB9h_ejqYkZxW6EXlT_-FddgRuauQDHd7B36n5Em2HAzLDTk6vP6TfABtuhPl" />
-      </div>
-    </div>
-  </header>
-
-  <main class="app-main page-wrap payment-main">
-    <div class="payment-glow"></div>
-
-    <!-- Segmented switcher -->
-    <div class="switcher">
-      <button class="switcher-tab active" id="tab-summary" data-tab="summary">
-        <span class="material-symbols-outlined">receipt_long</span> Ringkasan Order
-      </button>
-      <button class="switcher-tab" id="tab-ticket" data-tab="ticket">
-        <span class="material-symbols-outlined">confirmation_number</span> E-Ticket Saya
-        <span class="pulse-dot"></span>
-      </button>
-    </div>
-
-    <!-- ===== VIEW 1: SUMMARY ===== -->
-    <div class="view" id="view-summary">
-
-      <!-- Timer -->
-      <div class="timer-banner">
-        <div><span class="material-symbols-outlined filled">timer</span><span>Selesaikan pembayaran dalam</span></div>
-        <strong id="countdown">14:59</strong>
+        <button class="switcher-tab" id="tab-ticket" data-tab="ticket">
+          <span class="material-symbols-outlined">confirmation_number</span>
+          E-Ticket Saya
+          <span class="pulse-dot"></span>
+        </button>
       </div>
 
-      <!-- Order card -->
-      <div class="card card-pad order-card">
-        <div class="order-head">
-          <div class="order-poster" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA09R78sJjPURcXd30r5rnohvDNC0VDMdVzUp7ZcoKiy8tjJ16vW8-VChSQHqklojm1fur4Np-D-hwxUD9twpST9CvQD-ePi9ANcIS-OeaPRmc1xQmt_P5Zxf5JoZgSpj4YiTIVfg6OW4XDFOj3ZLtZZlO-dMZcKI6cN67Jh0ureQQ-WYUwLqRSWTPemdvglYsy2n71c4mnvoPW60z7vMKWUNBlXSi63IhNESTV6n1T')">
-            <span class="badge badge-dark">17+</span>
+      <!-- ===== VIEW 1: SUMMARY ===== -->
+      <div class="view" id="view-summary">
+        <!-- Timer -->
+        <div class="timer-banner">
+          <div>
+            <span class="material-symbols-outlined filled">timer</span
+            ><span>Selesaikan pembayaran dalam</span>
           </div>
-          <div class="order-info">
-            <div class="order-tags"><span class="badge badge-dark" id="order-format">IMAX 2D</span><span class="text-muted font-label">Dolby Atmos</span></div>
-            <h2 id="order-movie">Dune: Part Two</h2>
-            <p class="order-cinema"><span class="material-symbols-outlined">theater_comedy</span> <span id="order-cinema">Grand Indonesia XXI</span></p>
-            <p class="font-label text-outline" id="order-studio">Studio IMAX 1</p>
-            <div class="order-date"><span><span class="material-symbols-outlined">calendar_today</span> Rabu, 15 Mei 2024</span><strong id="order-time">15:45 WIB</strong></div>
+          <strong id="countdown">14:59</strong>
+        </div>
+
+        <!-- Order card -->
+        <div class="card card-pad order-card">
+          <div class="order-head">
+            <div
+              class="order-poster"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA09R78sJjPURcXd30r5rnohvDNC0VDMdVzUp7ZcoKiy8tjJ16vW8-VChSQHqklojm1fur4Np-D-hwxUD9twpST9CvQD-ePi9ANcIS-OeaPRmc1xQmt_P5Zxf5JoZgSpj4YiTIVfg6OW4XDFOj3ZLtZZlO-dMZcKI6cN67Jh0ureQQ-WYUwLqRSWTPemdvglYsy2n71c4mnvoPW60z7vMKWUNBlXSi63IhNESTV6n1T&quot;);
+              "
+            >
+              <span class="badge badge-dark">17+</span>
+            </div>
+            <div class="order-info">
+              <div class="order-tags">
+                <span class="badge badge-dark" id="order-format">IMAX 2D</span
+                ><span class="text-muted font-label">Dolby Atmos</span>
+              </div>
+              <h2 id="order-movie">Dune: Part Two</h2>
+              <p class="order-cinema">
+                <span class="material-symbols-outlined">theater_comedy</span>
+                <span id="order-cinema">Grand Indonesia XXI</span>
+              </p>
+              <p class="font-label text-outline" id="order-studio">
+                Studio IMAX 1
+              </p>
+              <div class="order-date">
+                <span
+                  ><span class="material-symbols-outlined">calendar_today</span>
+                  Rabu, 15 Mei 2024</span
+                ><strong id="order-time">15:45 WIB</strong>
+              </div>
+            </div>
+          </div>
+          <div class="seat-capsule">
+            <div>
+              <span class="material-symbols-outlined">chair</span
+              ><span
+                >Kursi Terpilih (<span id="guest-count">2</span> Tamu):</span
+              >
+            </div>
+            <div class="seat-tags" id="order-seats">
+              <span class="badge badge-solid">D6</span
+              ><span class="badge badge-solid">D7</span>
+            </div>
           </div>
         </div>
-        <div class="seat-capsule">
-          <div><span class="material-symbols-outlined">chair</span><span>Kursi Terpilih (<span id="guest-count">2</span> Tamu):</span></div>
-          <div class="seat-tags" id="order-seats"><span class="badge badge-solid">D6</span><span class="badge badge-solid">D7</span></div>
-        </div>
-      </div>
 
-      <!-- Price breakdown -->
-      <div class="card card-pad price-card">
-        <div class="price-head"><h3>Rincian Pembayaran</h3><span class="font-label text-outline">ID: #ORD-77291</span></div>
-        <div class="price-lines">
-          <div class="price-line"><span>Tiket IMAX 2D (<span id="ticket-x">2x Rp 75.000</span>)</span><strong id="ticket-total">Rp 150.000</strong></div>
-          <div class="price-line"><span>Combo Popcorn Caramel &amp; 2 Soda<small>Gourmet Concessions VIP</small></span><strong>Rp 65.000</strong></div>
-          <div class="price-line"><span>Biaya Layanan &amp; Pajak Bioskop</span><strong>Rp 4.000</strong></div>
-          <div class="price-line discount"><span><span class="material-symbols-outlined filled">verified</span> CINEPASSHEMAT</span><strong>-Rp 20.000</strong></div>
-        </div>
-        <div class="divider"></div>
-        <div class="grand-total"><span>Grand Total</span><strong id="grand-total">Rp 199.000</strong></div>
-      </div>
-
-      <!-- Payment methods -->
-      <section class="payment-methods">
-        <div class="section-heading"><h3>Metode Pembayaran</h3><span class="font-label text-primary"><span class="material-symbols-outlined">lock</span> Enkripsi 256-Bit</span></div>
-
-        <div class="pay-option active" data-method="qris">
-          <div class="pay-option-head">
-            <div class="pay-icon"><span class="material-symbols-outlined">qr_code_scanner</span></div>
-            <div class="pay-name"><div><strong>QRIS Instant</strong><span class="badge badge-solid">Rekomendasi</span></div><p>GoPay, OVO, DANA, BCA, ShopeePay</p></div>
-            <span class="radio"><i></i></span>
+        <!-- Price breakdown -->
+        <div class="card card-pad price-card">
+          <div class="price-head">
+            <h3>Rincian Pembayaran</h3>
+            <span class="font-label text-outline">ID: #ORD-77291</span>
           </div>
-          <div class="qr-panel">
-            <div class="qr-box">
-              <svg viewBox="0 0 100 100" aria-label="Kode QR pembayaran">
-                <rect x="5" y="5" width="26" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><rect x="11" y="11" width="14" height="14" fill="#ffd165"/>
-                <rect x="69" y="5" width="26" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><rect x="75" y="11" width="14" height="14" fill="#ffd165"/>
-                <rect x="5" y="69" width="26" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><rect x="11" y="75" width="14" height="14" fill="#ffd165"/>
-                <rect x="36" y="8" width="5" height="5"/><rect x="46" y="8" width="10" height="5"/><rect x="56" y="8" width="8" height="5"/>
-                <rect x="36" y="18" width="10" height="5"/><rect x="51" y="18" width="5" height="5"/><rect x="8" y="36" width="5" height="5"/>
-                <rect x="18" y="36" width="10" height="5"/><rect x="8" y="46" width="8" height="10"/><rect x="21" y="51" width="5" height="5"/>
-                <rect x="36" y="36" width="8" height="8" fill="#ffd165"/><rect x="49" y="36" width="5" height="5"/><rect x="59" y="36" width="15" height="5"/><rect x="79" y="36" width="12" height="5"/>
-                <rect x="36" y="49" width="5" height="15"/><rect x="46" y="46" width="12" height="6"/><rect x="63" y="46" width="8" height="12"/><rect x="76" y="46" width="15" height="5"/>
-                <rect x="46" y="57" width="12" height="5"/><rect x="76" y="56" width="6" height="12"/><rect x="87" y="56" width="6" height="6"/>
-                <rect x="36" y="69" width="8" height="5"/><rect x="49" y="69" width="15" height="5"/><rect x="69" y="69" width="5" height="8"/><rect x="79" y="69" width="12" height="5"/>
-                <rect x="36" y="79" width="18" height="6"/><rect x="59" y="79" width="5" height="12"/><rect x="69" y="82" width="12" height="5"/><rect x="86" y="79" width="5" height="12"/>
-                <rect x="36" y="90" width="8" height="5"/><rect x="49" y="90" width="12" height="5"/><rect x="66" y="92" width="15" height="4"/><rect x="86" y="94" width="8" height="4"/>
+          <div class="price-lines">
+            <div class="price-line">
+              <span
+                >Tiket IMAX 2D (<span id="ticket-x">2x Rp 75.000</span>)</span
+              ><strong id="ticket-total">Rp 150.000</strong>
+            </div>
+            <div class="price-line">
+              <span
+                >Combo Popcorn Caramel &amp; 2 Soda<small
+                  >Gourmet Concessions VIP</small
+                ></span
+              ><strong>Rp 65.000</strong>
+            </div>
+            <div class="price-line">
+              <span>Biaya Layanan &amp; Pajak Bioskop</span
+              ><strong>Rp 4.000</strong>
+            </div>
+            <div class="price-line discount">
+              <span
+                ><span class="material-symbols-outlined filled">verified</span>
+                CINEPASSHEMAT</span
+              ><strong>-Rp 20.000</strong>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="grand-total">
+            <span>Grand Total</span><strong id="grand-total">Rp 199.000</strong>
+          </div>
+        </div>
+
+        <!-- Payment methods -->
+        <section class="payment-methods">
+          <div class="section-heading">
+            <h3>Metode Pembayaran</h3>
+            <span class="font-label text-primary"
+              ><span class="material-symbols-outlined">lock</span> Enkripsi
+              256-Bit</span
+            >
+          </div>
+
+          <div class="pay-option active" data-method="qris">
+            <div class="pay-option-head">
+              <div class="pay-icon">
+                <span class="material-symbols-outlined">qr_code_scanner</span>
+              </div>
+              <div class="pay-name">
+                <div>
+                  <strong>QRIS Instant</strong
+                  ><span class="badge badge-solid">Rekomendasi</span>
+                </div>
+                <p>GoPay, OVO, DANA, BCA, ShopeePay</p>
+              </div>
+              <span class="radio"><i></i></span>
+            </div>
+            <div class="qr-panel">
+              <div class="qr-box">
+                <svg viewBox="0 0 100 100" aria-label="Kode QR pembayaran">
+                  <rect
+                    x="5"
+                    y="5"
+                    width="26"
+                    height="26"
+                    rx="2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  />
+                  <rect x="11" y="11" width="14" height="14" fill="#ffd165" />
+                  <rect
+                    x="69"
+                    y="5"
+                    width="26"
+                    height="26"
+                    rx="2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  />
+                  <rect x="75" y="11" width="14" height="14" fill="#ffd165" />
+                  <rect
+                    x="5"
+                    y="69"
+                    width="26"
+                    height="26"
+                    rx="2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  />
+                  <rect x="11" y="75" width="14" height="14" fill="#ffd165" />
+                  <rect x="36" y="8" width="5" height="5" />
+                  <rect x="46" y="8" width="10" height="5" />
+                  <rect x="56" y="8" width="8" height="5" />
+                  <rect x="36" y="18" width="10" height="5" />
+                  <rect x="51" y="18" width="5" height="5" />
+                  <rect x="8" y="36" width="5" height="5" />
+                  <rect x="18" y="36" width="10" height="5" />
+                  <rect x="8" y="46" width="8" height="10" />
+                  <rect x="21" y="51" width="5" height="5" />
+                  <rect x="36" y="36" width="8" height="8" fill="#ffd165" />
+                  <rect x="49" y="36" width="5" height="5" />
+                  <rect x="59" y="36" width="15" height="5" />
+                  <rect x="79" y="36" width="12" height="5" />
+                  <rect x="36" y="49" width="5" height="15" />
+                  <rect x="46" y="46" width="12" height="6" />
+                  <rect x="63" y="46" width="8" height="12" />
+                  <rect x="76" y="46" width="15" height="5" />
+                  <rect x="46" y="57" width="12" height="5" />
+                  <rect x="76" y="56" width="6" height="12" />
+                  <rect x="87" y="56" width="6" height="6" />
+                  <rect x="36" y="69" width="8" height="5" />
+                  <rect x="49" y="69" width="15" height="5" />
+                  <rect x="69" y="69" width="5" height="8" />
+                  <rect x="79" y="69" width="12" height="5" />
+                  <rect x="36" y="79" width="18" height="6" />
+                  <rect x="59" y="79" width="5" height="12" />
+                  <rect x="69" y="82" width="12" height="5" />
+                  <rect x="86" y="79" width="5" height="12" />
+                  <rect x="36" y="90" width="8" height="5" />
+                  <rect x="49" y="90" width="12" height="5" />
+                  <rect x="66" y="92" width="15" height="4" />
+                  <rect x="86" y="94" width="8" height="4" />
+                </svg>
+              </div>
+              <span class="font-label text-primary"
+                >Pindai dengan Aplikasi Dompet Digital Anda</span
+              >
+              <p class="text-muted">
+                Otomatis terverifikasi dalam hitungan detik
+              </p>
+            </div>
+          </div>
+
+          <div class="pay-option" data-method="va">
+            <div class="pay-option-head">
+              <div class="pay-icon muted">
+                <span class="material-symbols-outlined">account_balance</span>
+              </div>
+              <div class="pay-name">
+                <strong>Virtual Account</strong>
+                <p>BCA, Mandiri, BRI, BNI, Permata</p>
+              </div>
+              <span class="radio"></span>
+            </div>
+          </div>
+
+          <div class="pay-option" data-method="card">
+            <div class="pay-option-head">
+              <div class="pay-icon muted">
+                <span class="material-symbols-outlined">credit_card</span>
+              </div>
+              <div class="pay-name">
+                <strong>Kartu Kredit / Debit</strong>
+                <p>Visa, Mastercard, JCB, Amex</p>
+              </div>
+              <span class="radio"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pay button -->
+        <div class="pay-action">
+          <button class="btn btn-primary btn-lg btn-block" id="pay-btn">
+            <span class="material-symbols-outlined">payments</span>
+            <span
+              >Konfirmasi &amp; Bayar
+              <span id="pay-amount">Rp 199.000</span></span
+            >
+          </button>
+          <p class="text-outline">
+            <span class="material-symbols-outlined">format_image_left</span>
+            Transaksi aman dilindungi garansi pembatalan CinePass VIP
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== VIEW 2: E-TICKET ===== -->
+      <div class="view hidden" id="view-ticket">
+        <div class="success-banner">
+          <div>
+            <span class="material-symbols-outlined filled">check_circle</span>
+            <div>
+              <strong class="font-label">PEMBAYARAN BERHASIL</strong>
+              <p>Siap dipindai di pintu teater</p>
+            </div>
+          </div>
+          <span class="badge badge-dark">Studio IMAX 1</span>
+        </div>
+
+        <!-- Perforated ticket -->
+        <div class="ticket">
+          <div
+            class="ticket-hero"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBoX9L8VJ_KGJ4STzVDbWlPPu7m4aeLF0mIjt7ueaJf80s1WuDjh5oQa96K-gN9dC8cMzP29OakOGku9kVGeK2dnvEUJvfY2YwWI2Zgn-DT2klFDAK5mPLLUKxF52e_Mh_MI_GeicFHZoe-WuNDaMVyNTFYqg7escj-gzjrGpTRr5xpef1zSK0hycp-OotBjPI-903UVa8c7uF7TgONLUgMhrfT5Qrbd__RSkoh27KH&quot;);
+            "
+          >
+            <div class="ticket-hero-scrim"></div>
+            <span class="badge badge-dark ticket-watermark"
+              ><span class="material-symbols-outlined">stars</span> VIP PREMIERE
+              PASS</span
+            >
+            <div class="ticket-hero-bottom">
+              <div>
+                <span class="badge badge-solid" id="ticket-format"
+                  >IMAX 2D</span
+                >
+                <h2 id="ticket-movie">Dune: Part Two</h2>
+              </div>
+              <span class="badge badge-dark">17+ Dewasa</span>
+            </div>
+          </div>
+          <div class="ticket-specs">
+            <div class="spec-grid">
+              <div>
+                <span class="font-label text-outline">Bioskop &amp; Lokasi</span
+                ><strong id="ticket-cinema">Grand Indonesia</strong>
+                <p>Studio IMAX 1 (Lantai 8)</p>
+              </div>
+              <div>
+                <span class="font-label text-outline">Waktu Pertunjukan</span
+                ><strong class="gold" id="ticket-time">15:45 WIB</strong>
+                <p>Rabu, 15 Mei 2024</p>
+              </div>
+            </div>
+            <div class="mini-grid">
+              <div>
+                <span class="font-label text-outline">Tamu</span
+                ><strong id="ticket-guests">2 Orang</strong>
+              </div>
+              <div>
+                <span class="font-label text-outline">Kursi VIP</span
+                ><strong class="gold" id="ticket-seats">D6, D7</strong>
+              </div>
+              <div>
+                <span class="font-label text-outline">F&amp;B Combo</span
+                ><strong>1 Paket</strong>
+              </div>
+            </div>
+          </div>
+          <div class="perforation">
+            <span class="notch left"></span><span class="cut-line"></span
+            ><span class="notch right"></span>
+          </div>
+          <div class="ticket-stub">
+            <div class="booking-code">
+              <span class="font-label text-muted">KODE BOOKING</span
+              ><strong>#CP-8842-IMAX</strong>
+            </div>
+            <div class="qr-substrate">
+              <svg viewBox="0 0 100 100" aria-label="Kode QR e-ticket">
+                <rect
+                  x="5"
+                  y="5"
+                  width="28"
+                  height="28"
+                  rx="2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <rect x="11" y="11" width="16" height="16" />
+                <rect
+                  x="67"
+                  y="5"
+                  width="28"
+                  height="28"
+                  rx="2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <rect x="73" y="11" width="16" height="16" />
+                <rect
+                  x="5"
+                  y="67"
+                  width="28"
+                  height="28"
+                  rx="2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <rect x="11" y="73" width="16" height="16" />
+                <rect x="40" y="8" width="5" height="5" />
+                <rect x="50" y="8" width="8" height="5" />
+                <rect x="40" y="18" width="18" height="5" />
+                <rect x="8" y="40" width="15" height="5" />
+                <rect x="8" y="52" width="6" height="6" />
+                <rect x="40" y="40" width="20" height="20" />
+                <circle cx="50" cy="50" r="4" fill="#f8fafc" />
+                <rect x="67" y="40" width="8" height="8" />
+                <rect x="80" y="40" width="12" height="5" />
+                <rect x="67" y="53" width="10" height="7" />
+                <rect x="82" y="53" width="10" height="7" />
+                <rect x="40" y="67" width="10" height="5" />
+                <rect x="55" y="67" width="6" height="12" />
+                <rect x="67" y="67" width="8" height="5" />
+                <rect x="80" y="67" width="12" height="12" />
+                <rect x="40" y="78" width="12" height="14" />
+                <rect x="67" y="78" width="8" height="8" />
+                <rect x="80" y="84" width="12" height="8" />
               </svg>
+              <div class="barcode">
+                <i style="width: 3px"></i><i style="width: 7px"></i
+                ><i style="width: 2px"></i><i style="width: 5px"></i
+                ><i style="width: 11px"></i> <i style="width: 3px"></i
+                ><i style="width: 2px"></i><i style="width: 7px"></i
+                ><i style="width: 5px"></i><i style="width: 11px"></i>
+                <i style="width: 2px"></i><i style="width: 7px"></i
+                ><i style="width: 3px"></i><i style="width: 11px"></i
+                ><i style="width: 5px"></i> <i style="width: 2px"></i
+                ><i style="width: 7px"></i><i style="width: 3px"></i>
+              </div>
+              <span class="barcode-num">9942 8842 1092 3418</span>
             </div>
-            <span class="font-label text-primary">Pindai dengan Aplikasi Dompet Digital Anda</span>
-            <p class="text-muted">Otomatis terverifikasi dalam hitungan detik</p>
-          </div>
-        </div>
-
-        <div class="pay-option" data-method="va">
-          <div class="pay-option-head">
-            <div class="pay-icon muted"><span class="material-symbols-outlined">account_balance</span></div>
-            <div class="pay-name"><strong>Virtual Account</strong><p>BCA, Mandiri, BRI, BNI, Permata</p></div>
-            <span class="radio"></span>
-          </div>
-        </div>
-
-        <div class="pay-option" data-method="card">
-          <div class="pay-option-head">
-            <div class="pay-icon muted"><span class="material-symbols-outlined">credit_card</span></div>
-            <div class="pay-name"><strong>Kartu Kredit / Debit</strong><p>Visa, Mastercard, JCB, Amex</p></div>
-            <span class="radio"></span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Pay button -->
-      <div class="pay-action">
-        <button class="btn btn-primary btn-lg btn-block" id="pay-btn">
-          <span class="material-symbols-outlined">payments</span>
-          <span>Konfirmasi &amp; Bayar <span id="pay-amount">Rp 199.000</span></span>
-        </button>
-        <p class="text-outline"><span class="material-symbols-outlined">format_image_left</span> Transaksi aman dilindungi garansi pembatalan CinePass VIP</p>
-      </div>
-    </div>
-
-    <!-- ===== VIEW 2: E-TICKET ===== -->
-    <div class="view hidden" id="view-ticket">
-      <div class="success-banner">
-        <div><span class="material-symbols-outlined filled">check_circle</span><div><strong class="font-label">PEMBAYARAN BERHASIL</strong><p>Siap dipindai di pintu teater</p></div></div>
-        <span class="badge badge-dark">Studio IMAX 1</span>
-      </div>
-
-      <!-- Perforated ticket -->
-      <div class="ticket">
-        <div class="ticket-hero" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBoX9L8VJ_KGJ4STzVDbWlPPu7m4aeLF0mIjt7ueaJf80s1WuDjh5oQa96K-gN9dC8cMzP29OakOGku9kVGeK2dnvEUJvfY2YwWI2Zgn-DT2klFDAK5mPLLUKxF52e_Mh_MI_GeicFHZoe-WuNDaMVyNTFYqg7escj-gzjrGpTRr5xpef1zSK0hycp-OotBjPI-903UVa8c7uF7TgONLUgMhrfT5Qrbd__RSkoh27KH')">
-          <div class="ticket-hero-scrim"></div>
-          <span class="badge badge-dark ticket-watermark"><span class="material-symbols-outlined">stars</span> VIP PREMIERE PASS</span>
-          <div class="ticket-hero-bottom">
-            <div><span class="badge badge-solid" id="ticket-format">IMAX 2D</span><h2 id="ticket-movie">Dune: Part Two</h2></div>
-            <span class="badge badge-dark">17+ Dewasa</span>
-          </div>
-        </div>
-        <div class="ticket-specs">
-          <div class="spec-grid">
-            <div><span class="font-label text-outline">Bioskop &amp; Lokasi</span><strong id="ticket-cinema">Grand Indonesia</strong><p>Studio IMAX 1 (Lantai 8)</p></div>
-            <div><span class="font-label text-outline">Waktu Pertunjukan</span><strong class="gold" id="ticket-time">15:45 WIB</strong><p>Rabu, 15 Mei 2024</p></div>
-          </div>
-          <div class="mini-grid">
-            <div><span class="font-label text-outline">Tamu</span><strong id="ticket-guests">2 Orang</strong></div>
-            <div><span class="font-label text-outline">Kursi VIP</span><strong class="gold" id="ticket-seats">D6, D7</strong></div>
-            <div><span class="font-label text-outline">F&amp;B Combo</span><strong>1 Paket</strong></div>
-          </div>
-        </div>
-        <div class="perforation"><span class="notch left"></span><span class="cut-line"></span><span class="notch right"></span></div>
-        <div class="ticket-stub">
-          <div class="booking-code"><span class="font-label text-muted">KODE BOOKING</span><strong>#CP-8842-IMAX</strong></div>
-          <div class="qr-substrate">
-            <svg viewBox="0 0 100 100" aria-label="Kode QR e-ticket">
-              <rect x="5" y="5" width="28" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><rect x="11" y="11" width="16" height="16"/>
-              <rect x="67" y="5" width="28" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><rect x="73" y="11" width="16" height="16"/>
-              <rect x="5" y="67" width="28" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><rect x="11" y="73" width="16" height="16"/>
-              <rect x="40" y="8" width="5" height="5"/><rect x="50" y="8" width="8" height="5"/><rect x="40" y="18" width="18" height="5"/><rect x="8" y="40" width="15" height="5"/>
-              <rect x="8" y="52" width="6" height="6"/><rect x="40" y="40" width="20" height="20"/><circle cx="50" cy="50" r="4" fill="#f8fafc"/>
-              <rect x="67" y="40" width="8" height="8"/><rect x="80" y="40" width="12" height="5"/><rect x="67" y="53" width="10" height="7"/><rect x="82" y="53" width="10" height="7"/>
-              <rect x="40" y="67" width="10" height="5"/><rect x="55" y="67" width="6" height="12"/><rect x="67" y="67" width="8" height="5"/><rect x="80" y="67" width="12" height="12"/>
-              <rect x="40" y="78" width="12" height="14"/><rect x="67" y="78" width="8" height="8"/><rect x="80" y="84" width="12" height="8"/>
-            </svg>
-            <div class="barcode">
-              <i style="width:3px"></i><i style="width:7px"></i><i style="width:2px"></i><i style="width:5px"></i><i style="width:11px"></i>
-              <i style="width:3px"></i><i style="width:2px"></i><i style="width:7px"></i><i style="width:5px"></i><i style="width:11px"></i>
-              <i style="width:2px"></i><i style="width:7px"></i><i style="width:3px"></i><i style="width:11px"></i><i style="width:5px"></i>
-              <i style="width:2px"></i><i style="width:7px"></i><i style="width:3px"></i>
+            <p class="brightness-hint">
+              <span class="material-symbols-outlined">brightness_medium</span>
+              Tingkatkan kecerahan layar saat pemindaian
+            </p>
+            <div class="fnb-note">
+              <span class="material-symbols-outlined">fastfood</span>
+              <div>
+                <strong>Ambil Combo Popcorn di Counter VIP</strong>
+                <p>Tunjukkan e-ticket ini ke staf XXI Cafe</p>
+              </div>
             </div>
-            <span class="barcode-num">9942 8842 1092 3418</span>
           </div>
-          <p class="brightness-hint"><span class="material-symbols-outlined">brightness_medium</span> Tingkatkan kecerahan layar saat pemindaian</p>
-          <div class="fnb-note"><span class="material-symbols-outlined">fastfood</span><div><strong>Ambil Combo Popcorn di Counter VIP</strong><p>Tunjukkan e-ticket ini ke staf XXI Cafe</p></div></div>
+        </div>
+
+        <div class="ticket-actions">
+          <button class="btn btn-primary btn-lg btn-block" id="save-ticket">
+            <span class="material-symbols-outlined">download</span> Simpan Tiket
+            ke Ponsel
+          </button>
+          <button class="btn btn-secondary btn-lg btn-block" id="back-home">
+            <span class="material-symbols-outlined">home</span> Kembali ke
+            Beranda Bioskop
+          </button>
         </div>
       </div>
+    </main>
 
-      <div class="ticket-actions">
-        <button class="btn btn-primary btn-lg btn-block" id="save-ticket"><span class="material-symbols-outlined">download</span> Simpan Tiket ke Ponsel</button>
-        <button class="btn btn-secondary btn-lg btn-block" id="back-home"><span class="material-symbols-outlined">home</span> Kembali ke Beranda Bioskop</button>
-      </div>
-    </div>
-  </main>
-
-  <script src="{% static 'js/global.js' %}"></script>
-  <script src="{% static 'js/pembayaran.js' %}"></script>
-</body>
+    <script src="{% static 'js/global.js' %}"></script>
+    <script src="{% static 'js/pembayaran.js' %}"></script>
+  </body>
 </html>

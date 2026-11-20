@@ -1,223 +1,475 @@
-<!DOCTYPE html>
+{%load static%}
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f131d" />
-  <meta name="description" content="Detail film dan pilihan jadwal tayang di CinePass." />
-  <title>Detail Film &amp; Jadwal — CinePass</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f131d" />
+    <meta
+      name="description"
+      content="Detail film dan pilihan jadwal tayang di CinePass."
+    />
+    <title>Detail Film &amp; Jadwal — CinePass</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/detail-film.css" />
-</head>
-<body data-page="detail">
-
-  <!-- Header with back button -->
-  <header class="app-header">
-    <div class="header-inner">
-      <div class="header-brand">
-        <button class="icon-btn back-btn" data-back="index.html" aria-label="Kembali">
-          <span class="material-symbols-outlined">arrow_back</span>
-        </button>
-        <span class="material-symbols-outlined brand-mark">local_activity</span>
-        <h1 class="header-title">Detail Film</h1>
-      </div>
-      <div class="header-actions">
-        <img class="avatar" alt="Foto profil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUXBSYAu91mm6JlT57Kt84VDWH5zW_n5_NAqDsIItU7hEGf9joowRvbCa_SpISQRUVegKPlSK3uYN4W7T5VG8ST8Jl35WLL4oyZIA9UhQFzW63IKpJU6qGT2We-NxeP2kzOSg_8uUPRyAZt3BKA_DrNP5gwMtMuvuB1ANWrDVkiweB9h_ejqYkZxW6EXlT_-FddgRuauQDHd7B36n5Em2HAzLDTk6vP6TfABtuhPl" />
-        <nav class="desktop-nav" aria-label="Navigasi utama">
-          <a href="index.html" data-nav="home">Beranda</a>
-          <a href="pembayaran.html" data-nav="tickets">Tiket Saya</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main class="app-main page-wrap detail-main">
-    <div class="detail-content">
-
-      <!-- 1. Hero backdrop -->
-      <section class="hero-backdrop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARBLX_8M9KytOeuOBxVnLJoUWHrgK94q0ZdNhUriC5z6PZ2eATKVIAs1hnOS1VdR1XJ8BlMONRvyB5R0e5px6XN0tObSeSkp3NSuFmQB74R_0SOf9uphAN9R1c605mq_KO8nmu0s3zkwKuSkaXTdQEFJWhVtO_vhaaoJPO-Ds0XtuBqJNEUK675IUsnmS1bhEpfE6eBNjtzoSGz4WlJ40V6owwNi2DVfY7eB1gSogC')">
-        <div class="hero-scrim"></div>
-        <button class="play-trailer" id="play-trailer" aria-label="Putar trailer">
-          <span class="material-symbols-outlined">play_arrow</span>
-        </button>
-        <span class="badge badge-dark hero-badge">VIP Premiere</span>
-      </section>
-
-      <!-- 2. Title block -->
-      <section class="title-block">
-        <div class="title-row">
-          <div class="mini-poster" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBs6I0v2YN4WvkUllGId5Gu_ZGDQP4_ZJB2L2iNKYx4cfyQQQJgy2bdSIqvf25b7vAoEJE6vmjNuzSbqichqJdJmnpmtmW0pC7L9m66efNRRzinlVrkHsYlQ9aGRhW-lF_X92iTKQrhfbkRgtdHP9t5u4sLy0D80XY0cbRW-HFLoxMgM4_TThOSA2D7cHdOYJYu_1TLEh2sRqO1tPWIv_WuXC8DA3zjWhzvBnESWBZl')">
-            <span class="mini-poster-tag">IMAX</span>
-          </div>
-          <div class="title-meta">
-            <div class="official-tag">
-              <span class="material-symbols-outlined filled">verified</span>
-              Penayangan Resmi
-            </div>
-            <h2 class="movie-title">Dune: Part Two</h2>
-            <p class="movie-tagline">Frank Herbert's Masterpiece</p>
-            <div class="movie-tags">
-              <span class="badge badge-dark">17+</span>
-              <span class="badge badge-dark">2j 46m</span>
-              <span class="badge badge-outline">Sci-Fi</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Experience specs -->
-        <div class="specs-bar">
-          <div class="spec"><span class="material-symbols-outlined">surround_sound</span><span>Dolby Atmos</span></div>
-          <span class="spec-divider"></span>
-          <div class="spec"><span class="material-symbols-outlined">aspect_ratio</span><span>IMAX Laser 70mm</span></div>
-          <span class="spec-divider"></span>
-          <div class="spec gold"><span class="material-symbols-outlined">workspace_premium</span><span>VIP</span></div>
-        </div>
-
-        <!-- Ratings bento -->
-        <div class="rating-grid">
-          <div class="rating-cell">
-            <div class="rating-value"><span class="material-symbols-outlined filled">star</span><strong>8.6</strong><small>/10</small></div>
-            <span class="font-label">Skor IMDb</span>
-          </div>
-          <div class="rating-cell">
-            <div class="rating-value"><span class="material-symbols-outlined filled">favorite</span><strong>95%</strong></div>
-            <span class="font-label">CineScore</span>
-          </div>
-          <div class="rating-cell">
-            <div class="rating-value"><span class="material-symbols-outlined">forum</span><strong>12.4k</strong></div>
-            <span class="font-label">Ulasan</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. Synopsis -->
-      <section class="section synopsis-section">
-        <div class="card card-pad synopsis-card">
-          <div class="section-heading">
-            <h3 class="font-heading">Sinopsis</h3>
-            <span class="material-symbols-outlined text-muted">movie_filter</span>
-          </div>
-          <p class="synopsis-text clamp-3" id="synopsis-text">
-            Paul Atreides bersatu dengan Chani dan suku Fremen untuk membalas dendam terhadap para konspirator yang telah menghancurkan keluarganya. Menghadapi pilihan krusial antara cinta sejati dalam hidupnya dan takdir alam semesta, Paul berusaha keras mencegah masa depan mengerikan yang hanya ia sendiri yang dapat memperkirakannya.
-          </p>
-          <button class="btn-ghost synopsis-toggle" id="synopsis-toggle">
-            <span id="synopsis-label">Baca Selengkapnya</span>
-            <span class="material-symbols-outlined" id="synopsis-icon">expand_more</span>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/detail-film.css' %}" />
+  </head>
+  <body data-page="detail">
+    <!-- Header with back button -->
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <button
+            class="icon-btn back-btn"
+            data-back="index.html"
+            aria-label="Kembali"
+          >
+            <span class="material-symbols-outlined">arrow_back</span>
           </button>
+          <span class="material-symbols-outlined brand-mark"
+            >local_activity</span
+          >
+          <h1 class="header-title">Detail Film</h1>
+        </div>
+        <div class="header-actions">
+          <img
+            class="avatar"
+            alt="Foto profil"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUXBSYAu91mm6JlT57Kt84VDWH5zW_n5_NAqDsIItU7hEGf9joowRvbCa_SpISQRUVegKPlSK3uYN4W7T5VG8ST8Jl35WLL4oyZIA9UhQFzW63IKpJU6qGT2We-NxeP2kzOSg_8uUPRyAZt3BKA_DrNP5gwMtMuvuB1ANWrDVkiweB9h_ejqYkZxW6EXlT_-FddgRuauQDHd7B36n5Em2HAzLDTk6vP6TfABtuhPl"
+          />
+          <nav class="desktop-nav" aria-label="Navigasi utama">
+            <a href="index.html" data-nav="home">Beranda</a>
+            <a href="pembayaran.html" data-nav="tickets">Tiket Saya</a>
+          </nav>
+        </div>
+      </div>
+    </header>
 
-          <div class="cast-block">
-            <p class="font-label text-muted">Pemeran &amp; Sutradara</p>
-            <div class="cast-rail no-scrollbar">
-              <div class="cast-chip"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY05MdqtmpjN3r9ueqPndp7R2xo9E9ko_4LhuRSmRynrqIvI3ft3bRlh7vrzayYeJsBwl5zH6PU4phR4xVVjxEAUrC_E-B0zu4SJgdvFIO8nBm85Iq6V3QXP7E0JC96pOVejA-Rko6o3uU2RP-u0dYMCWijTW-nlKLQMRC6e0dZdi3BsjI6nHFmpuNsNxk9tPLlKWNHXKgovHkhvw3i5ANFgxsbRAAbbYPReKQSQWm" alt="Timothée Chalamet" /><div><strong>Timothée Chalamet</strong><small>Paul Atreides</small></div></div>
-              <div class="cast-chip"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFYZmhQs2PDTQOpKfWxZPM4EIx8kLKApKoylaEs8DgAA8HmxHeAjXVXCV6R-MLhEvOOE70vPloNsl2zKDLii3h_4EpYAajGgPku1xgza6zjvBfYbJDdT2-ud9mdouSTh2Tr7wwz7lgyaqIWOX7H2_NVhPzFDzTndjzkKyrcYx8KkoMdDaBThgX6uLXU8M11zyTqRIuDfLfL_zVwVr-chjJX4dL30XmCUgTYOh_YA9l" alt="Zendaya" /><div><strong>Zendaya</strong><small>Chani</small></div></div>
-              <div class="cast-chip"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDckMBwmXhZtPOZVLp-zULVJ-H_Gll_MvJJf0wJcZvGs41kyLR1a11Bd1EHlocaw2A5NMqVDVdXlEUPHZnvONh3Jj3rInGbgAFKcmdO3ai5FLRKHEB-LuU9LY4HUOu5OicguhRV12kg3oBwH5MrNIXFvBHuUxYCAXAOZqCnQia5xp0fxzW6dUn1EH_1belsVqumlmbvBFVu0b_n1BW0taq-t4z20YTuEijQVSnHF6oy" alt="Rebecca Ferguson" /><div><strong>Rebecca Ferguson</strong><small>Lady Jessica</small></div></div>
-              <div class="cast-chip"><span class="cast-director"><span class="material-symbols-outlined">video_camera_front</span></span><div><strong>Denis Villeneuve</strong><small>Sutradara</small></div></div>
+    <main class="app-main page-wrap detail-main">
+      <div class="detail-content">
+        <!-- 1. Hero backdrop -->
+        <section
+          class="hero-backdrop"
+          style="
+            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuARBLX_8M9KytOeuOBxVnLJoUWHrgK94q0ZdNhUriC5z6PZ2eATKVIAs1hnOS1VdR1XJ8BlMONRvyB5R0e5px6XN0tObSeSkp3NSuFmQB74R_0SOf9uphAN9R1c605mq_KO8nmu0s3zkwKuSkaXTdQEFJWhVtO_vhaaoJPO-Ds0XtuBqJNEUK675IUsnmS1bhEpfE6eBNjtzoSGz4WlJ40V6owwNi2DVfY7eB1gSogC&quot;);
+          "
+        >
+          <div class="hero-scrim"></div>
+          <button
+            class="play-trailer"
+            id="play-trailer"
+            aria-label="Putar trailer"
+          >
+            <span class="material-symbols-outlined">play_arrow</span>
+          </button>
+          <span class="badge badge-dark hero-badge">VIP Premiere</span>
+        </section>
+
+        <!-- 2. Title block -->
+        <section class="title-block">
+          <div class="title-row">
+            <div
+              class="mini-poster"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBs6I0v2YN4WvkUllGId5Gu_ZGDQP4_ZJB2L2iNKYx4cfyQQQJgy2bdSIqvf25b7vAoEJE6vmjNuzSbqichqJdJmnpmtmW0pC7L9m66efNRRzinlVrkHsYlQ9aGRhW-lF_X92iTKQrhfbkRgtdHP9t5u4sLy0D80XY0cbRW-HFLoxMgM4_TThOSA2D7cHdOYJYu_1TLEh2sRqO1tPWIv_WuXC8DA3zjWhzvBnESWBZl&quot;);
+              "
+            >
+              <span class="mini-poster-tag">IMAX</span>
+            </div>
+            <div class="title-meta">
+              <div class="official-tag">
+                <span class="material-symbols-outlined filled">verified</span>
+                Penayangan Resmi
+              </div>
+              <h2 class="movie-title">Dune: Part Two</h2>
+              <p class="movie-tagline">Frank Herbert's Masterpiece</p>
+              <div class="movie-tags">
+                <span class="badge badge-dark">17+</span>
+                <span class="badge badge-dark">2j 46m</span>
+                <span class="badge badge-outline">Sci-Fi</span>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- 4. Date selector -->
-      <section class="section">
-        <div class="section-heading">
-          <h3 class="font-heading">Pilih Jadwal Tayang</h3>
-          <span class="font-label text-primary"><span class="material-symbols-outlined">calendar_month</span> Mei 2024</span>
-        </div>
-        <div class="date-rail no-scrollbar" id="date-rail">
-          <button class="date-chip active"><span>Hari ini</span><strong>15</strong><span>Mei</span></button>
-          <button class="date-chip"><span>Kamis</span><strong>16</strong><span>Mei</span></button>
-          <button class="date-chip"><span>Jumat</span><strong>17</strong><span>Mei</span></button>
-          <button class="date-chip"><span>Sabtu</span><strong>18</strong><span>Mei</span></button>
-          <button class="date-chip"><span>Minggu</span><strong>19</strong><span>Mei</span></button>
-        </div>
-      </section>
+          <!-- Experience specs -->
+          <div class="specs-bar">
+            <div class="spec">
+              <span class="material-symbols-outlined">surround_sound</span
+              ><span>Dolby Atmos</span>
+            </div>
+            <span class="spec-divider"></span>
+            <div class="spec">
+              <span class="material-symbols-outlined">aspect_ratio</span
+              ><span>IMAX Laser 70mm</span>
+            </div>
+            <span class="spec-divider"></span>
+            <div class="spec gold">
+              <span class="material-symbols-outlined">workspace_premium</span
+              ><span>VIP</span>
+            </div>
+          </div>
 
-      <!-- 5. Cinemas & showtimes -->
-      <section class="section">
-        <div class="section-heading">
-          <h3 class="font-heading">Bioskop Tersedia</h3>
-          <span class="text-muted" style="font-size:0.75rem">Jakarta Pusat</span>
-        </div>
-        <div class="cinema-accordions" id="cinema-list">
-
-          <article class="accordion open">
-            <button class="accordion-head" aria-expanded="true">
-              <div class="accordion-head-left">
-                <span class="accordion-icon"><span class="material-symbols-outlined">theaters</span></span>
-                <div><h4>Grand Indonesia XXI</h4><p><span class="material-symbols-outlined">location_on</span> 3.2 km • Grand Indonesia Mall Lt. 8</p></div>
+          <!-- Ratings bento -->
+          <div class="rating-grid">
+            <div class="rating-cell">
+              <div class="rating-value">
+                <span class="material-symbols-outlined filled">star</span
+                ><strong>8.6</strong><small>/10</small>
               </div>
-              <span class="material-symbols-outlined accordion-chevron">expand_less</span>
+              <span class="font-label">Skor IMDb</span>
+            </div>
+            <div class="rating-cell">
+              <div class="rating-value">
+                <span class="material-symbols-outlined filled">favorite</span
+                ><strong>95%</strong>
+              </div>
+              <span class="font-label">CineScore</span>
+            </div>
+            <div class="rating-cell">
+              <div class="rating-value">
+                <span class="material-symbols-outlined">forum</span
+                ><strong>12.4k</strong>
+              </div>
+              <span class="font-label">Ulasan</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Synopsis -->
+        <section class="section synopsis-section">
+          <div class="card card-pad synopsis-card">
+            <div class="section-heading">
+              <h3 class="font-heading">Sinopsis</h3>
+              <span class="material-symbols-outlined text-muted"
+                >movie_filter</span
+              >
+            </div>
+            <p class="synopsis-text clamp-3" id="synopsis-text">
+              Paul Atreides bersatu dengan Chani dan suku Fremen untuk membalas
+              dendam terhadap para konspirator yang telah menghancurkan
+              keluarganya. Menghadapi pilihan krusial antara cinta sejati dalam
+              hidupnya dan takdir alam semesta, Paul berusaha keras mencegah
+              masa depan mengerikan yang hanya ia sendiri yang dapat
+              memperkirakannya.
+            </p>
+            <button class="btn-ghost synopsis-toggle" id="synopsis-toggle">
+              <span id="synopsis-label">Baca Selengkapnya</span>
+              <span class="material-symbols-outlined" id="synopsis-icon"
+                >expand_more</span
+              >
             </button>
-            <div class="accordion-body">
-              <div class="studio">
-                <div class="studio-head"><div class="studio-format"><span class="badge badge-outline">IMAX 2D</span><span>Studio 1 • Laser</span></div><strong class="gold">Rp 75.000</strong></div>
-                <div class="showtime-grid">
-                  <button class="showtime" data-cinema="Grand Indonesia XXI" data-format="IMAX 2D" data-price="75000" data-price-label="Rp 75.000" data-time="12:30">12:30</button>
-                  <button class="showtime selected" data-cinema="Grand Indonesia XXI" data-format="IMAX 2D" data-price="75000" data-price-label="Rp 75.000" data-time="15:45">15:45</button>
-                  <button class="showtime" data-cinema="Grand Indonesia XXI" data-format="IMAX 2D" data-price="75000" data-price-label="Rp 75.000" data-time="19:00">19:00</button>
-                  <button class="showtime" data-cinema="Grand Indonesia XXI" data-format="IMAX 2D" data-price="75000" data-price-label="Rp 75.000" data-time="21:45">21:45</button>
+
+            <div class="cast-block">
+              <p class="font-label text-muted">Pemeran &amp; Sutradara</p>
+              <div class="cast-rail no-scrollbar">
+                <div class="cast-chip">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY05MdqtmpjN3r9ueqPndp7R2xo9E9ko_4LhuRSmRynrqIvI3ft3bRlh7vrzayYeJsBwl5zH6PU4phR4xVVjxEAUrC_E-B0zu4SJgdvFIO8nBm85Iq6V3QXP7E0JC96pOVejA-Rko6o3uU2RP-u0dYMCWijTW-nlKLQMRC6e0dZdi3BsjI6nHFmpuNsNxk9tPLlKWNHXKgovHkhvw3i5ANFgxsbRAAbbYPReKQSQWm"
+                    alt="Timothée Chalamet"
+                  />
+                  <div>
+                    <strong>Timothée Chalamet</strong
+                    ><small>Paul Atreides</small>
+                  </div>
                 </div>
-              </div>
-              <div class="studio-divider"></div>
-              <div class="studio">
-                <div class="studio-head"><div class="studio-format"><span class="badge badge-dark" style="color:var(--secondary)">Deluxe 2D</span><span>Studio 3 • Dolby 7.1</span></div><strong>Rp 50.000</strong></div>
-                <div class="showtime-grid">
-                  <button class="showtime" data-cinema="Grand Indonesia XXI" data-format="Deluxe 2D" data-price="50000" data-price-label="Rp 50.000" data-time="13:00">13:00</button>
-                  <button class="showtime" data-cinema="Grand Indonesia XXI" data-format="Deluxe 2D" data-price="50000" data-price-label="Rp 50.000" data-time="16:15">16:15</button>
-                  <button class="showtime" data-cinema="Grand Indonesia XXI" data-format="Deluxe 2D" data-price="50000" data-price-label="Rp 50.000" data-time="18:30">18:30</button>
-                  <span class="showtime sold">Habis</span>
+                <div class="cast-chip">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFYZmhQs2PDTQOpKfWxZPM4EIx8kLKApKoylaEs8DgAA8HmxHeAjXVXCV6R-MLhEvOOE70vPloNsl2zKDLii3h_4EpYAajGgPku1xgza6zjvBfYbJDdT2-ud9mdouSTh2Tr7wwz7lgyaqIWOX7H2_NVhPzFDzTndjzkKyrcYx8KkoMdDaBThgX6uLXU8M11zyTqRIuDfLfL_zVwVr-chjJX4dL30XmCUgTYOh_YA9l"
+                    alt="Zendaya"
+                  />
+                  <div><strong>Zendaya</strong><small>Chani</small></div>
+                </div>
+                <div class="cast-chip">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDckMBwmXhZtPOZVLp-zULVJ-H_Gll_MvJJf0wJcZvGs41kyLR1a11Bd1EHlocaw2A5NMqVDVdXlEUPHZnvONh3Jj3rInGbgAFKcmdO3ai5FLRKHEB-LuU9LY4HUOu5OicguhRV12kg3oBwH5MrNIXFvBHuUxYCAXAOZqCnQia5xp0fxzW6dUn1EH_1belsVqumlmbvBFVu0b_n1BW0taq-t4z20YTuEijQVSnHF6oy"
+                    alt="Rebecca Ferguson"
+                  />
+                  <div>
+                    <strong>Rebecca Ferguson</strong><small>Lady Jessica</small>
+                  </div>
+                </div>
+                <div class="cast-chip">
+                  <span class="cast-director"
+                    ><span class="material-symbols-outlined"
+                      >video_camera_front</span
+                    ></span
+                  >
+                  <div>
+                    <strong>Denis Villeneuve</strong><small>Sutradara</small>
+                  </div>
                 </div>
               </div>
             </div>
-          </article>
+          </div>
+        </section>
 
-          <article class="accordion">
-            <button class="accordion-head" aria-expanded="false">
-              <div class="accordion-head-left">
-                <span class="accordion-icon muted"><span class="material-symbols-outlined">chair</span></span>
-                <div><h4>Plaza Senayan XXI</h4><p><span class="material-symbols-outlined">location_on</span> 5.8 km • Lt. 5 • The Premiere Lounge</p></div>
-              </div>
-              <span class="material-symbols-outlined accordion-chevron">expand_more</span>
+        <!-- 4. Date selector -->
+        <section class="section">
+          <div class="section-heading">
+            <h3 class="font-heading">Pilih Jadwal Tayang</h3>
+            <span class="font-label text-primary"
+              ><span class="material-symbols-outlined">calendar_month</span> Mei
+              2024</span
+            >
+          </div>
+          <div class="date-rail no-scrollbar" id="date-rail">
+            <button class="date-chip active">
+              <span>Hari ini</span><strong>15</strong><span>Mei</span>
             </button>
-            <div class="accordion-body">
-              <div class="studio">
-                <div class="studio-head"><div class="studio-format"><span class="badge badge-outline">The Premiere</span><span>Lounge VIP</span></div><strong class="gold">Rp 150.000</strong></div>
-                <div class="showtime-grid">
-                  <button class="showtime" data-cinema="Plaza Senayan XXI" data-format="The Premiere" data-price="150000" data-price-label="Rp 150.000" data-time="14:00">14:00</button>
-                  <button class="showtime" data-cinema="Plaza Senayan XXI" data-format="The Premiere" data-price="150000" data-price-label="Rp 150.000" data-time="17:15">17:15</button>
-                  <button class="showtime" data-cinema="Plaza Senayan XXI" data-format="The Premiere" data-price="150000" data-price-label="Rp 150.000" data-time="20:30">20:30</button>
-                  <span class="showtime sold">—</span>
+            <button class="date-chip">
+              <span>Kamis</span><strong>16</strong><span>Mei</span>
+            </button>
+            <button class="date-chip">
+              <span>Jumat</span><strong>17</strong><span>Mei</span>
+            </button>
+            <button class="date-chip">
+              <span>Sabtu</span><strong>18</strong><span>Mei</span>
+            </button>
+            <button class="date-chip">
+              <span>Minggu</span><strong>19</strong><span>Mei</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 5. Cinemas & showtimes -->
+        <section class="section">
+          <div class="section-heading">
+            <h3 class="font-heading">Bioskop Tersedia</h3>
+            <span class="text-muted" style="font-size: 0.75rem"
+              >Jakarta Pusat</span
+            >
+          </div>
+          <div class="cinema-accordions" id="cinema-list">
+            <article class="accordion open">
+              <button class="accordion-head" aria-expanded="true">
+                <div class="accordion-head-left">
+                  <span class="accordion-icon"
+                    ><span class="material-symbols-outlined"
+                      >theaters</span
+                    ></span
+                  >
+                  <div>
+                    <h4>Grand Indonesia XXI</h4>
+                    <p>
+                      <span class="material-symbols-outlined">location_on</span>
+                      3.2 km • Grand Indonesia Mall Lt. 8
+                    </p>
+                  </div>
+                </div>
+                <span class="material-symbols-outlined accordion-chevron"
+                  >expand_less</span
+                >
+              </button>
+              <div class="accordion-body">
+                <div class="studio">
+                  <div class="studio-head">
+                    <div class="studio-format">
+                      <span class="badge badge-outline">IMAX 2D</span
+                      ><span>Studio 1 • Laser</span>
+                    </div>
+                    <strong class="gold">Rp 75.000</strong>
+                  </div>
+                  <div class="showtime-grid">
+                    <button
+                      class="showtime"
+                      data-cinema="Grand Indonesia XXI"
+                      data-format="IMAX 2D"
+                      data-price="75000"
+                      data-price-label="Rp 75.000"
+                      data-time="12:30"
+                    >
+                      12:30
+                    </button>
+                    <button
+                      class="showtime selected"
+                      data-cinema="Grand Indonesia XXI"
+                      data-format="IMAX 2D"
+                      data-price="75000"
+                      data-price-label="Rp 75.000"
+                      data-time="15:45"
+                    >
+                      15:45
+                    </button>
+                    <button
+                      class="showtime"
+                      data-cinema="Grand Indonesia XXI"
+                      data-format="IMAX 2D"
+                      data-price="75000"
+                      data-price-label="Rp 75.000"
+                      data-time="19:00"
+                    >
+                      19:00
+                    </button>
+                    <button
+                      class="showtime"
+                      data-cinema="Grand Indonesia XXI"
+                      data-format="IMAX 2D"
+                      data-price="75000"
+                      data-price-label="Rp 75.000"
+                      data-time="21:45"
+                    >
+                      21:45
+                    </button>
+                  </div>
+                </div>
+                <div class="studio-divider"></div>
+                <div class="studio">
+                  <div class="studio-head">
+                    <div class="studio-format">
+                      <span
+                        class="badge badge-dark"
+                        style="color: var(--secondary)"
+                        >Deluxe 2D</span
+                      ><span>Studio 3 • Dolby 7.1</span>
+                    </div>
+                    <strong>Rp 50.000</strong>
+                  </div>
+                  <div class="showtime-grid">
+                    <button
+                      class="showtime"
+                      data-cinema="Grand Indonesia XXI"
+                      data-format="Deluxe 2D"
+                      data-price="50000"
+                      data-price-label="Rp 50.000"
+                      data-time="13:00"
+                    >
+                      13:00
+                    </button>
+                    <button
+                      class="showtime"
+                      data-cinema="Grand Indonesia XXI"
+                      data-format="Deluxe 2D"
+                      data-price="50000"
+                      data-price-label="Rp 50.000"
+                      data-time="16:15"
+                    >
+                      16:15
+                    </button>
+                    <button
+                      class="showtime"
+                      data-cinema="Grand Indonesia XXI"
+                      data-format="Deluxe 2D"
+                      data-price="50000"
+                      data-price-label="Rp 50.000"
+                      data-time="18:30"
+                    >
+                      18:30
+                    </button>
+                    <span class="showtime sold">Habis</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <!-- Sticky bottom action bar -->
-  <div class="sticky-bar">
-    <div class="sticky-bar-inner">
-      <div class="sticky-info">
-        <div class="sticky-cinema"><span class="material-symbols-outlined">confirmation_number</span><span id="summary-cinema">Grand Indonesia XXI • IMAX 2D</span></div>
-        <div class="sticky-price-row"><span id="summary-time">15:45 WIB • </span><strong id="summary-price">Mulai Rp 75.000<small>/tiket</small></strong></div>
+            <article class="accordion">
+              <button class="accordion-head" aria-expanded="false">
+                <div class="accordion-head-left">
+                  <span class="accordion-icon muted"
+                    ><span class="material-symbols-outlined">chair</span></span
+                  >
+                  <div>
+                    <h4>Plaza Senayan XXI</h4>
+                    <p>
+                      <span class="material-symbols-outlined">location_on</span>
+                      5.8 km • Lt. 5 • The Premiere Lounge
+                    </p>
+                  </div>
+                </div>
+                <span class="material-symbols-outlined accordion-chevron"
+                  >expand_more</span
+                >
+              </button>
+              <div class="accordion-body">
+                <div class="studio">
+                  <div class="studio-head">
+                    <div class="studio-format">
+                      <span class="badge badge-outline">The Premiere</span
+                      ><span>Lounge VIP</span>
+                    </div>
+                    <strong class="gold">Rp 150.000</strong>
+                  </div>
+                  <div class="showtime-grid">
+                    <button
+                      class="showtime"
+                      data-cinema="Plaza Senayan XXI"
+                      data-format="The Premiere"
+                      data-price="150000"
+                      data-price-label="Rp 150.000"
+                      data-time="14:00"
+                    >
+                      14:00
+                    </button>
+                    <button
+                      class="showtime"
+                      data-cinema="Plaza Senayan XXI"
+                      data-format="The Premiere"
+                      data-price="150000"
+                      data-price-label="Rp 150.000"
+                      data-time="17:15"
+                    >
+                      17:15
+                    </button>
+                    <button
+                      class="showtime"
+                      data-cinema="Plaza Senayan XXI"
+                      data-format="The Premiere"
+                      data-price="150000"
+                      data-price-label="Rp 150.000"
+                      data-time="20:30"
+                    >
+                      20:30
+                    </button>
+                    <span class="showtime sold">—</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
       </div>
-      <button class="btn btn-gold sticky-cta" id="choose-seat">
-        Pilih Kursi <span class="material-symbols-outlined">arrow_forward</span>
-      </button>
-    </div>
-  </div>
+    </main>
 
-  <script src="js/global.js"></script>
-  <script src="js/detail-film.js"></script>
-</body>
+    <!-- Sticky bottom action bar -->
+    <div class="sticky-bar">
+      <div class="sticky-bar-inner">
+        <div class="sticky-info">
+          <div class="sticky-cinema">
+            <span class="material-symbols-outlined">confirmation_number</span
+            ><span id="summary-cinema">Grand Indonesia XXI • IMAX 2D</span>
+          </div>
+          <div class="sticky-price-row">
+            <span id="summary-time">15:45 WIB • </span
+            ><strong id="summary-price"
+              >Mulai Rp 75.000<small>/tiket</small></strong
+            >
+          </div>
+        </div>
+        <a
+          class="btn btn-gold sticky-cta"
+          href="{% url 'pilihKursi' %}"
+          id="choose-seat"
+        >
+          Pilih Kursi
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <script src="{% static 'js/global.js' %}"></script>
+    <script src="{% static 'js/detail-film.js' %}"></script>
+  </body>
 </html>

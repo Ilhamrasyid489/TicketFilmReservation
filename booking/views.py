@@ -9,9 +9,23 @@ def home(request):
     return render(request, 'index.html')
 
 
-def payment(request):
+def filmDetail(request):
     """
-    View Menampilkan halaman pembayaran
+    View Menampilkan halaman detail-film
+    """
+
+    return render(request, 'page/detail-film.html')
+
+def pilihKursi(request):
+    """
+    View Menampilkan halaman pilih kursi
+    """
+
+    return render(request, 'page/pilih-kursi.html')
+
+def Pembayaran(request):
+    """
+    View Menampilkan halaman pilih pembayaran
     """
 
     return render(request, 'page/pembayaran.html')
